@@ -1,0 +1,63 @@
+---
+title: 8x8 LED Matrix Display — Scrolling Text
+date: 2026-02-15
+tags: LED, microcontroller, display, project
+excerpt: Building a scrolling text display using an 8x8 LED matrix, shift registers, and an ATmega328P.
+---
+
+[text]
+I've always wanted to build a scrolling text LED display — that classic 80s airport/stock-ticker vibe. Here's how I put one together with minimal parts.
+
+[heading] Components
+
+[list]
+- 8x8 LED matrix (common cathode)
+- 2× 74HC595 shift registers
+- ATmega328P (or Arduino Uno)
+- 8× 220Ω current-limiting resistors
+- Breadboard and jumper wires
+- 5V power supply
+
+[heading] How It Works
+
+[text]
+The LED matrix has 8 rows and 8 columns, giving us 64 individually addressable LEDs. We use **multiplexing** to drive them — only one row is active at a time, but we cycle through them so fast (>60Hz) that persistence of vision makes it look like they're all on.
+
+[text]
+The 74HC595 shift registers let us control all 16 lines (8 rows + 8 columns) using only 3 GPIO pins: **data**, **clock**, and **latch**.
+
+[heading] Key Formula
+
+[text]
+Current limiting resistor value for each LED:
+
+[latex]
+R = \frac{V_{CC} - V_{LED}}{I_{LED}} = \frac{5 - 2}{0.015} = 200\,\Omega
+
+[text]
+I went with 220Ω (nearest standard value), giving us about 13.6mA per LED — perfectly safe and bright.
+
+[heading] Shift Register Timing
+
+[code]
+// Pseudocode for one frame
+for (row = 0; row < 8; row++) {
+    shiftOut(columnData[row]);  // Send column pattern
+    shiftOut(1 << row);         // Activate current row
+    latchPulse();               // Update outputs
+    delay_us(1000);             // Hold for 1ms
+    clearOutputs();             // Turn off before next row
+}
+
+[heading] Scrolling Logic
+
+[text]
+Each character is stored as an 8-byte array (one byte per column). To scroll, we shift the display buffer left by one column every ~80ms, and append the next column of the next character.
+
+[quote]
+The result? A beautiful scrolling text display that could've come straight out of a 1985 electronics magazine. Sometimes the simplest builds are the most satisfying.
+
+[divider]
+
+[text]
+Total cost was under $10, and it took an afternoon to build. Next up: making it WiFi-connected with an ESP8266 so it can display live data!

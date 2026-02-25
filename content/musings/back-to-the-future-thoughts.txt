@@ -1,0 +1,62 @@
+---
+title: Back to the Future — Flux Capacitors and Time
+date: 2026-02-16
+tags: shows, movies, back-to-the-future, 80s
+excerpt: Why Back to the Future is the perfect 80s movie and what it means to me as an engineer.
+---
+
+[text]
+If you're into electrical engineering and you don't love *Back to the Future*, we need to talk. This movie is basically a love letter to tinkering, building, and the sheer joy of making things work.
+
+[heading] Doc Brown — The Engineer Hero
+
+[text]
+Doc Brown is every engineer's spirit animal. He's eccentric, passionate, obsessed with his work, and absolutely convinced that his crazy idea will work. And you know what? *It does*.
+
+[quote]
+"Roads? Where we're going, we don't need roads." — Doc Brown
+
+[text]
+That line isn't just cool — it's the engineering mindset distilled into one sentence. We're always building toward a future that doesn't exist yet.
+
+[heading] The Flux Capacitor
+
+[text]
+Let's talk about the elephant in the room. The flux capacitor requires 1.21 gigawatts of power. Let's put that in perspective:
+
+[latex]
+1.21\,\text{GW} = 1.21 \times 10^9\,\text{W}
+
+[text]
+That's roughly the output of a nuclear power plant. Or, as Doc figured out, one bolt of lightning.
+
+[text]
+The energy stored in the lightning bolt:
+
+[latex]
+E = P \times t \approx 1.21 \times 10^9 \times 0.001 = 1.21 \times 10^6\,\text{J} \approx 1.21\,\text{MJ}
+
+[text]
+That's actually... not that much energy. About the same as a stick of dynamite. The trick isn't the *energy* — it's the *power* (energy per unit time). Lightning delivers a modest amount of energy at an absolutely insane rate.
+
+[heading] Favorite Moments
+
+[list]
+- The DeLorean hitting 88 mph for the first time
+- The clock tower scene — peak tension
+- Doc's expression when the flux capacitor actually works
+- "This is heavy." / "Weight has nothing to do with it."
+- The entire skateboard chase scene
+
+[heading] What It Means
+
+[text]
+Beyond the time travel and the laughs, *Back to the Future* is about the idea that your future isn't written yet. You have the power to change it. That message hits different when you're an engineer — because building a better future is literally what we do.
+
+[quote]
+"Your future hasn't been written yet. No one's has. Your future is whatever you make it. So make it a good one." — Doc Brown
+
+[divider]
+
+[text]
+Great Scott, I love this movie. If you haven't watched it in a while, fire it up. It holds up perfectly — just like a well-designed circuit.

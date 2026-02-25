@@ -1,0 +1,3 @@
+# Projects - list one filename per line (without .txt extension)
+led-matrix-display
+audio-amplifier-build

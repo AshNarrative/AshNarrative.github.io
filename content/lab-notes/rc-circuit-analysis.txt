@@ -1,0 +1,67 @@
+---
+title: RC Circuit Analysis — Transient Response
+date: 2026-02-18
+tags: circuits, capacitors, transient, RC
+excerpt: Exploring the charging and discharging behavior of RC circuits with time constants and exponentials.
+---
+
+[text]
+The RC circuit is one of the most fundamental building blocks in electronics. It's used in filters, timing circuits, and signal conditioning. Let's break down its transient behavior.
+
+[heading] Circuit Setup
+
+[text]
+An RC circuit consists of a resistor (R) and a capacitor (C) connected in series with a voltage source. When the switch closes, the capacitor begins to charge.
+
+[heading] Charging Equation
+
+[text]
+The voltage across the capacitor as a function of time during charging:
+
+[latex]
+V_C(t) = V_S \left(1 - e^{-t/\tau}\right)
+
+[text]
+Where the **time constant** τ is:
+
+[latex]
+\tau = R \cdot C
+
+[text]
+After one time constant (τ), the capacitor reaches approximately **63.2%** of the supply voltage. After 5τ, it's considered fully charged (~99.3%).
+
+[heading] Discharging Equation
+
+[text]
+When the source is removed, the capacitor discharges through the resistor:
+
+[latex]
+V_C(t) = V_0 \cdot e^{-t/\tau}
+
+[heading] Energy Stored
+
+[text]
+The energy stored in a capacitor at any point:
+
+[latex]
+E = \frac{1}{2} C V^2
+
+[heading] Practical Example
+
+[code]
+Given: R = 10 kΩ, C = 100 μF, Vs = 5V
+τ = R × C = 10,000 × 0.0001 = 1.0 second
+
+At t = 1s:  Vc = 5 × (1 - e^(-1))   ≈ 3.16 V
+At t = 2s:  Vc = 5 × (1 - e^(-2))   ≈ 4.32 V
+At t = 5s:  Vc = 5 × (1 - e^(-5))   ≈ 4.97 V
+
+[list]
+- τ = 1 second for this circuit
+- After 3τ = 95% charged
+- After 5τ = 99.3% charged (effectively full)
+
+[divider]
+
+[text]
+RC circuits appear everywhere — from debouncing buttons to audio crossover networks. Master the exponential, and you master a huge chunk of analog electronics.

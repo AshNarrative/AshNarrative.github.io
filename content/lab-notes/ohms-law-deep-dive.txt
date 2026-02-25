@@ -1,0 +1,62 @@
+---
+title: Ohm's Law — A Deep Dive
+date: 2026-02-20
+tags: fundamentals, circuits, resistors
+excerpt: Revisiting the cornerstone of circuit analysis with real-world examples and derivations.
+---
+
+[text]
+Ohm's Law is the bedrock of electrical engineering. It describes the relationship between voltage, current, and resistance in a conductor. Let's explore it properly.
+
+[heading] The Basic Relationship
+
+[text]
+At its core, Ohm's Law states that the current flowing through a conductor between two points is directly proportional to the voltage across the two points, and inversely proportional to the resistance.
+
+[latex]
+V = I \cdot R
+
+[text]
+Where **V** is voltage in *volts* (V), **I** is current in *amperes* (A), and **R** is resistance in *ohms* (Ω).
+
+[heading] Power Dissipation
+
+[text]
+Combining Ohm's Law with the power equation gives us useful variants:
+
+[latex]
+P = V \cdot I = I^2 R = \frac{V^2}{R}
+
+[text]
+This is critical when designing circuits — you need to know how much power a resistor will dissipate to choose the right wattage rating.
+
+[heading] ## Kirchhoff's Voltage Law (KVL)
+
+[text]
+In any closed loop of a circuit, the sum of all voltages must equal zero:
+
+[latex]
+\sum_{k=1}^{n} V_k = 0
+
+[text]
+This is essentially conservation of energy applied to circuits. Walk around any loop, and you'll return to the same potential you started at.
+
+[heading] Practical Example
+
+[text]
+Consider a simple series circuit with a 9V battery and two resistors: R₁ = 330Ω and R₂ = 670Ω.
+
+[code]
+Total Resistance: R_total = R1 + R2 = 330 + 670 = 1000 Ω
+Current:          I = V / R = 9 / 1000 = 9 mA
+Voltage at R1:    V1 = I × R1 = 0.009 × 330 = 2.97 V
+Voltage at R2:    V2 = I × R2 = 0.009 × 670 = 6.03 V
+Check KVL:        V1 + V2 = 2.97 + 6.03 = 9.0 V ✓
+
+[quote]
+"The laws of physics are the same for all observers in uniform motion relative to one another." — But for circuits, Ohm's Law is where it all begins.
+
+[divider]
+
+[text]
+Understanding these fundamentals deeply is the key to tackling more complex topics like AC analysis, impedance, and filter design. Keep experimenting!

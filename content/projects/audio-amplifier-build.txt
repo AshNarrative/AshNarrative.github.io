@@ -1,0 +1,68 @@
+---
+title: Class-AB Audio Amplifier Build
+date: 2026-02-10
+tags: audio, amplifier, analog, transistors
+excerpt: Designing and building a discrete Class-AB audio amplifier from scratch — no ICs, just transistors.
+---
+
+[text]
+There's something deeply satisfying about hearing music come out of a circuit you built from individual transistors. This is my Class-AB audio amplifier build — no op-amps, no ICs, just discrete components.
+
+[heading] Design Goals
+
+[list]
+- Output power: ~1W into 8Ω speaker
+- THD < 1% at moderate volume
+- Single supply: 12V DC
+- Minimal component count
+
+[heading] Circuit Topology
+
+[text]
+The amplifier uses a classic complementary symmetry output stage with a **voltage amplifier stage** (VAS) and a **differential input pair** for stability.
+
+[text]
+The output transistors are NPN (TIP31C) and PNP (TIP32C) in a push-pull configuration. A **Vbe multiplier** provides the bias voltage to minimize crossover distortion.
+
+[heading] Key Calculations
+
+[text]
+Maximum output voltage swing:
+
+[latex]
+V_{out(peak)} = V_{CC} - V_{CE(sat)} - V_{dropout} \approx 12 - 1 - 1 = 10\,V_{peak}
+
+[text]
+Power delivered to 8Ω load:
+
+[latex]
+P = \frac{V_{rms}^2}{R_L} = \frac{(10/\sqrt{2})^2}{8} = \frac{50}{8} \approx 6.25\,W
+
+[text]
+In practice, with biasing and real-world losses, I get around **1-2W clean** output, which is plenty for a desktop speaker.
+
+[heading] Biasing the Output Stage
+
+[text]
+The Vbe multiplier sets the quiescent current to about 10-20mA to keep the transistors slightly conducting, reducing crossover distortion:
+
+[latex]
+V_{bias} = V_{BE} \times \left(1 + \frac{R_1}{R_2}\right)
+
+[code]
+Quiescent current: Iq = Vbias / (2 × Re)
+With Vbias = 1.4V and Re = 47Ω:
+Iq = 1.4 / (2 × 47) ≈ 14.9 mA ✓
+
+[heading] Results
+
+[text]
+The amp sounds *great* for what it is — warm, slightly colored (in a good way), and surprisingly detailed for a discrete design. It reminds me of those old hi-fi amps from the 70s and 80s.
+
+[quote]
+"The best amplifier is the one you build yourself." — Every DIY audio enthusiast, ever.
+
+[divider]
+
+[text]
+Next I want to add a tone control stage and maybe a headphone output. The discrete analog journey continues!

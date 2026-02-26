@@ -13,22 +13,22 @@
     'lab-notes': {
       title: 'Lab Notes',
       desc: 'Electrical engineering concepts, circuit analysis, and technical deep-dives.',
-      icon: '&gt;&gt;'
+      icon: '⚡'
     },
     'projects': {
       title: 'Projects',
       desc: 'Hands-on builds, schematics, and engineering experiments.',
-      icon: '[+]'
+      icon: '⚙'
     },
     'musings': {
       title: 'Musings',
       desc: 'Thoughts on shows, quotes, ideas, and everything in between.',
-      icon: '...'
+      icon: '✦'
     },
     'gallery': {
       title: 'Gallery',
       desc: 'Memorable moments and images worth sharing.',
-      icon: '[*]'
+      icon: '◈'
     }
   };
 
@@ -79,6 +79,10 @@
     for (const [key, sec] of Object.entries(sections)) {
       html += `
           <div class="home-card" onclick="location.hash='${key}'">
+            <span class="card-corner card-corner-tl"></span>
+            <span class="card-corner card-corner-tr"></span>
+            <span class="card-corner card-corner-bl"></span>
+            <span class="card-corner card-corner-br"></span>
             <div class="card-icon">${sec.icon}</div>
             <h3>${sec.title}</h3>
             <p>${sec.desc}</p>
@@ -133,10 +137,13 @@
         const sectionTitle = sections[post.section] ? sections[post.section].title : post.section;
         recentHtml += `
           <div class="post-card" onclick="location.hash='${post.section}/${post.slug}'">
-            <div class="post-title">${escapeHtml(m.title || post.slug)}</div>
-            <div class="post-date">${escapeHtml(m.date || '')}${sectionTitle ? ' · ' + escapeHtml(sectionTitle) : ''}</div>
-            ${m.excerpt ? `<div class="post-excerpt">${escapeHtml(m.excerpt)}</div>` : ''}
-            ${m.tags ? `<div class="post-tags">${m.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+            <div class="post-card-accent"></div>
+            <div class="post-card-body">
+              <div class="post-title">${escapeHtml(m.title || post.slug)}</div>
+              <div class="post-date">${escapeHtml(m.date || '')}${sectionTitle ? ' · ' + escapeHtml(sectionTitle) : ''}</div>
+              ${m.excerpt ? `<div class="post-excerpt">${escapeHtml(m.excerpt)}</div>` : ''}
+              ${m.tags ? `<div class="post-tags">${m.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+            </div>
           </div>`;
       }
 
@@ -227,10 +234,13 @@
         const m = post.meta;
         html += `
           <div class="post-card" onclick="location.hash='${section}/${post.slug}'">
-            <div class="post-title">${escapeHtml(m.title || post.slug)}</div>
-            <div class="post-date">${escapeHtml(m.date || '')}</div>
-            ${m.excerpt ? `<div class="post-excerpt">${escapeHtml(m.excerpt)}</div>` : ''}
-            ${m.tags ? `<div class="post-tags">${m.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+            <div class="post-card-accent"></div>
+            <div class="post-card-body">
+              <div class="post-title">${escapeHtml(m.title || post.slug)}</div>
+              <div class="post-date">${escapeHtml(m.date || '')}</div>
+              ${m.excerpt ? `<div class="post-excerpt">${escapeHtml(m.excerpt)}</div>` : ''}
+              ${m.tags ? `<div class="post-tags">${m.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+            </div>
           </div>`;
       }
 

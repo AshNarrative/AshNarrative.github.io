@@ -1,33 +1,34 @@
 /* ============================================================
-   AshNarrative — Vintage Web 1.0 Personal Homepage
-   Warm parchment · Deep burgundy · Serif elegance
+   AshNarrative — Vintage Workshop / Blueprint Personal Homepage
+   Dark forest green · Warm amber drafting paper · Copper accents
    ============================================================ */
 
 /* --- Fonts --- */
 /* Loaded via <link> in index.html for better performance */
 
 :root {
-  /* Vintage warm palette */
-  --bg-page:        #f4e8cc;
-  --bg-sidebar:     #4a1515;
-  --bg-sidebar-alt: #5c1e1e;
-  --bg-card:        #fdf3e0;
-  --bg-card-hover:  #f7e8c8;
-  --text-primary:   #2a1a0a;
-  --text-secondary: #5a3e28;
-  --text-sidebar:   #d4b896;
-  --text-sidebar-hi:#f5e6c8;
-  --accent:         #8b0000;
-  --accent-hover:   #a52a2a;
-  --accent-link:    #8b0000;
-  --accent-link-hv: #a52a2a;
-  --border-color:   #c9a87c;
-  --border-sidebar: #7a2e2e;
+  /* Blueprint Workshop palette */
+  --bg-page:         #1a2e1e;  /* dark forest — body fallback */
+  --bg-sidebar:      #1a2e1e;  /* forest green panel */
+  --bg-sidebar-alt:  #243d28;  /* slightly lighter green on hover */
+  --bg-content:      #ede0c4;  /* warm amber drafting paper */
+  --bg-card:         #f7f0de;  /* cream card surface */
+  --bg-card-hover:   #ede4c8;  /* slightly deeper cream */
+  --text-primary:    #1e1408;  /* rich dark ink */
+  --text-secondary:  #4e3c20;  /* medium amber-brown */
+  --text-sidebar:    #7ab880;  /* sage green */
+  --text-sidebar-hi: #c0eac4;  /* light sage highlight */
+  --accent:          #b86e18;  /* copper accent */
+  --accent-hover:    #cc8028;  /* brighter copper */
+  --accent-link:     #2a5c44;  /* deep forest teal */
+  --accent-link-hv:  #1e4a38;  /* darker teal */
+  --border-color:    #a08840;  /* warm gold border */
+  --border-sidebar:  #2c4e30;  /* dark sage border */
 
   --font-body:  'Lora', Georgia, 'Times New Roman', serif;
   --font-mono:  'IBM Plex Mono', 'Courier New', 'Courier', monospace;
 
-  --sidebar-width: 200px;
+  --sidebar-width: 210px;
 }
 
 /* --- Reset --- */
@@ -38,15 +39,6 @@ html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
   background: var(--bg-page);
-  /* Subtle paper texture via repeating gradient */
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 28px,
-      rgba(180,130,70,0.05) 28px,
-      rgba(180,130,70,0.05) 29px
-    );
   color: var(--text-primary);
   font-size: 1rem;
   line-height: 1.75;
@@ -57,7 +49,7 @@ body {
 a {
   color: var(--accent-link);
   text-decoration: underline;
-  text-decoration-color: rgba(139,0,0,0.35);
+  text-decoration-color: rgba(42,92,68,0.35);
 }
 a:hover {
   color: var(--accent-link-hv);
@@ -83,7 +75,7 @@ a:hover {
   flex-direction: column;
   flex-shrink: 0;
   /* Decorative double-line right border */
-  border-right: 3px double var(--border-sidebar);
+  border-right: 4px double var(--border-sidebar);
   position: fixed;
   top: 0;
   left: 0;
@@ -92,18 +84,18 @@ a:hover {
 }
 
 .sidebar-header {
-  padding: 1.2rem 1rem 0.8rem;
+  padding: 1.4rem 1rem 1rem;
   border-bottom: 2px solid var(--border-sidebar);
   text-align: center;
 }
 
 .site-title {
   font-family: var(--font-body);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.3;
-  margin-bottom: 0.35rem;
-  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.03em;
 }
 .site-title a {
   color: var(--text-sidebar-hi);
@@ -134,24 +126,25 @@ a:hover {
 
 .nav-link {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  padding: 0.45rem 1rem;
+  font-size: 0.76rem;
+  padding: 0.5rem 1rem;
   color: var(--text-sidebar);
   text-decoration: none;
   border-left: 3px solid transparent;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
   display: block;
+  text-transform: uppercase;
 }
 .nav-link:hover {
   color: var(--text-sidebar-hi);
   background: var(--bg-sidebar-alt);
-  border-left-color: var(--text-sidebar-hi);
+  border-left-color: var(--accent);
   text-decoration: none;
 }
 .nav-link.active {
   color: var(--text-sidebar-hi);
   background: var(--bg-sidebar-alt);
-  border-left-color: var(--text-sidebar-hi);
+  border-left-color: var(--accent);
   font-weight: 600;
 }
 
@@ -163,9 +156,9 @@ a:hover {
 }
 .sidebar-footer p {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   color: var(--text-sidebar);
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 /* ============================================================
@@ -177,6 +170,11 @@ a:hover {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* Warm amber drafting paper with subtle engineering grid */
+  background-color: var(--bg-content);
+  background-image:
+    repeating-linear-gradient(0deg,  rgba(80,55,15,0.055) 0px, rgba(80,55,15,0.055) 1px, transparent 1px, transparent 22px),
+    repeating-linear-gradient(90deg, rgba(80,55,15,0.055) 0px, rgba(80,55,15,0.055) 1px, transparent 1px, transparent 22px);
 }
 
 .main-content {
@@ -205,13 +203,13 @@ a:hover {
 .home-section { }
 .home-section .welcome-title {
   font-family: var(--font-body);
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 0.6rem;
   padding-bottom: 0.5rem;
   border-bottom: 3px double var(--border-color);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
 }
 .home-section .welcome-text {
   max-width: 650px;
@@ -231,14 +229,14 @@ a:hover {
   border: 2px solid var(--border-color);
   padding: 1.1rem 1.2rem;
   cursor: pointer;
-  box-shadow: 2px 3px 8px rgba(90,40,10,0.08);
+  box-shadow: 3px 4px 10px rgba(60,40,10,0.12);
   transition: box-shadow 0.15s, border-color 0.15s, background 0.15s;
 }
 .home-card:hover {
   background: var(--bg-card-hover);
   color: var(--text-primary);
   border-color: var(--accent);
-  box-shadow: 3px 5px 14px rgba(139,0,0,0.13);
+  box-shadow: 4px 6px 16px rgba(100,60,10,0.2);
 }
 .home-card h3 {
   font-family: var(--font-body);
@@ -262,7 +260,7 @@ a:hover {
   font-size: 1rem;
   margin-bottom: 0.35rem;
   font-family: var(--font-mono);
-  color: var(--border-color);
+  color: var(--accent);
 }
 
 /* ============================================================
@@ -275,11 +273,12 @@ a:hover {
 }
 .section-header h2 {
   font-family: var(--font-body);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 0.25rem;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 .section-header p {
   font-family: var(--font-body);
@@ -303,14 +302,14 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  box-shadow: 2px 3px 8px rgba(90,40,10,0.07);
+  box-shadow: 3px 4px 8px rgba(60,40,10,0.1);
   transition: box-shadow 0.15s, border-color 0.15s, background 0.15s;
 }
 .post-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--accent);
   color: var(--text-primary);
-  box-shadow: 3px 5px 14px rgba(139,0,0,0.12);
+  box-shadow: 4px 6px 14px rgba(100,60,10,0.18);
 }
 .post-card .post-title {
   font-family: var(--font-body);
@@ -348,7 +347,7 @@ a:hover {
   font-family: var(--font-mono);
   font-size: 0.65rem;
   padding: 0.1rem 0.45rem;
-  background: #eedcc0;
+  background: #e2d6b0;
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
   letter-spacing: 0.03em;
@@ -411,8 +410,8 @@ a:hover {
 .post-body .block-text em { font-style: italic; }
 
 .post-body .block-latex {
-  background: #faebd4;
-  border-left: 3px solid var(--accent);
+  background: #e8dab8;
+  border-left: 4px solid var(--accent);
   padding: 0.9rem 1.1rem;
   overflow-x: auto;
   margin: 1.2rem 0;
@@ -424,8 +423,8 @@ a:hover {
 }
 .post-body .block-image img {
   max-width: 100%;
-  border: 3px solid var(--border-color);
-  box-shadow: 3px 4px 10px rgba(90,40,10,0.15);
+  border: 4px solid var(--border-color);
+  box-shadow: 4px 5px 12px rgba(60,40,10,0.2);
 }
 .post-body .block-image .caption {
   font-family: var(--font-mono);
@@ -436,9 +435,9 @@ a:hover {
 }
 
 .post-body .block-code {
-  background: #2a1a0a;
-  border: 2px solid #5a3010;
-  border-left: 4px solid var(--accent);
+  background: #1a1e0c;
+  border: 2px solid #3a4018;
+  border-left: 5px solid var(--accent);
   padding: 0.9rem 1.1rem;
   overflow-x: auto;
   margin: 1.2rem 0;
@@ -446,20 +445,22 @@ a:hover {
 .post-body .block-code pre {
   font-family: var(--font-mono);
   font-size: 0.83rem;
-  color: #d4b896;
+  color: #a8d060;
   white-space: pre;
   line-height: 1.65;
 }
 
 .post-body .block-quote {
-  border-left: 3px solid var(--accent);
-  padding: 0.9rem 1.2rem;
-  background: #faebd4;
+  border-left: 4px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.9rem 1.3rem;
+  background: #e4d6b4;
   margin: 1.2rem 0;
   font-style: italic;
   color: var(--text-secondary);
   font-size: 0.98rem;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 .post-body .block-heading {
@@ -485,7 +486,7 @@ a:hover {
   display: inline-block;
   position: relative;
   top: -0.75em;
-  background: var(--bg-page);
+  background: var(--bg-content);
   padding: 0 0.6em;
   color: var(--border-color);
   font-size: 0.9em;
@@ -513,16 +514,16 @@ a:hover {
 .gallery-item {
   position: relative;
   overflow: hidden;
-  border: 3px solid var(--border-color);
+  border: 4px solid var(--border-color);
   cursor: pointer;
   aspect-ratio: 4/3;
   background: var(--bg-card);
-  box-shadow: 3px 4px 10px rgba(90,40,10,0.12);
+  box-shadow: 4px 5px 12px rgba(60,40,10,0.18);
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 .gallery-item:hover {
   border-color: var(--accent);
-  box-shadow: 4px 6px 16px rgba(139,0,0,0.18);
+  box-shadow: 5px 7px 20px rgba(100,60,10,0.25);
 }
 .gallery-item img {
   width: 100%;
@@ -535,8 +536,8 @@ a:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.35rem 0.7rem;
-  background: rgba(40,15,5,0.82);
+  padding: 0.4rem 0.8rem;
+  background: rgba(15,28,12,0.88);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--text-sidebar-hi);
@@ -548,7 +549,7 @@ a:hover {
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(30,10,5,0.93);
+  background: rgba(8,18,8,0.95);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -558,8 +559,8 @@ a:hover {
 .lightbox img {
   max-width: 90vw;
   max-height: 85vh;
-  border: 3px solid var(--border-color);
-  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  border: 4px solid var(--border-color);
+  box-shadow: 0 0 50px rgba(0,0,0,0.6);
 }
 .lightbox .lightbox-caption {
   position: absolute;
@@ -594,10 +595,10 @@ a:hover {
   font-style: italic;
 }
 .loading::after {
-  content: '';
+  content: '_';
   display: inline-block;
   width: 1em;
-  animation: blink 1s steps(2) infinite;
+  animation: blink 1.1s steps(2) infinite;
 }
 .empty-state {
   text-align: center;
@@ -658,7 +659,7 @@ a:hover {
   .nav-link:hover,
   .nav-link.active {
     border-left-color: transparent;
-    border-bottom-color: var(--text-sidebar-hi);
+    border-bottom-color: var(--accent);
   }
   .sidebar-footer { display: none; }
   .main-content { padding: 1.4rem 1.2rem; }
@@ -666,7 +667,7 @@ a:hover {
 
 /* --- Scrollbar --- */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #e8d4b0; }
+::-webkit-scrollbar-track { background: #ccc0a0; }
 ::-webkit-scrollbar-thumb {
   background: var(--border-color);
 }
@@ -675,5 +676,5 @@ a:hover {
 /* --- Selection --- */
 ::selection {
   background: var(--accent);
-  color: #f5e6c8;
+  color: #f0e8d0;
 }

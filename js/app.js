@@ -99,7 +99,7 @@
       await Promise.all(postSections.map(async (section) => {
         try {
           const indexRaw = await fetchContent(`content/${section}/index.txt`);
-          const slugs = ContentParser.parseIndex(indexRaw);
+          const slugs = ContentParser.parseIndex(indexRaw).slice(0, 2);
 
           await Promise.all(slugs.map(async (slug) => {
             try {
@@ -215,12 +215,6 @@
       }));
 
       const validPosts = posts.filter(Boolean);
-
-      validPosts.sort((a, b) => {
-        const da = a.meta.date || '';
-        const db = b.meta.date || '';
-        return db.localeCompare(da);
-      });
 
       let html = `
         <div class="section-header">

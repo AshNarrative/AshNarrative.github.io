@@ -628,6 +628,59 @@ a:hover {
 }
 
 /* ============================================================
+   PAGINATION
+   ============================================================ */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 2px solid var(--border-color);
+  flex-wrap: wrap;
+}
+.pagination-numbers {
+  display: flex;
+  gap: 0.3rem;
+}
+.pagination-link {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 0.35rem 0.7rem;
+  color: var(--accent-link);
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.pagination-link:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent);
+  color: var(--accent-hover);
+  text-decoration: none;
+}
+.pagination-link.active {
+  background: var(--accent);
+  color: #f0e8d0;
+  border-color: var(--accent);
+  font-weight: 600;
+  cursor: default;
+}
+.pagination-link.disabled {
+  color: var(--text-secondary);
+  opacity: 0.4;
+  cursor: default;
+  border-color: var(--border-color);
+}
+.pagination-link.disabled:hover {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+/* ============================================================
    LOADING / EMPTY
    ============================================================ */
 .loading {

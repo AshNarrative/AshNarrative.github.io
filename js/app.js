@@ -99,7 +99,7 @@
       await Promise.all(postSections.map(async (section) => {
         try {
           const indexRaw = await fetchContent(`content/${section}/index.txt`);
-          const slugs = ContentParser.parseIndex(indexRaw).slice(0, 2);
+          const slugs = ContentParser.parseIndex(indexRaw);
 
           await Promise.all(slugs.map(async (slug) => {
             try {

@@ -587,6 +587,29 @@ a:hover {
 }
 
 /* ============================================================
+   GUESTBOOK
+   ============================================================ */
+.guestbook-intro {
+  max-width: 680px;
+  margin-bottom: 1.8rem;
+}
+.guestbook-intro p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+.guestbook-comments {
+  max-width: 680px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-card);
+  padding: 1.4rem;
+  box-shadow: 3px 4px 10px rgba(60,40,10,0.12);
+}
+.guestbook-comments .utterances {
+  max-width: 100%;
+}
+
+/* ============================================================
    LIGHTBOX
    ============================================================ */
 .lightbox {

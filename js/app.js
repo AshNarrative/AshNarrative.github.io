@@ -49,6 +49,8 @@
 
     if (route.section === 'home') {
       renderHome();
+    } else if (route.section === 'about') {
+      renderAbout();
     } else if (route.section === 'gallery') {
       renderGallery();
     } else if (route.slug) {
@@ -64,7 +66,7 @@
   window.addEventListener('DOMContentLoaded', navigate);
 
   // ── Home ──────────────────────────────────────────────────
-  function renderHome() {
+  async function renderHome() {
     let html = `
       <div class="home-section">
         <h2 class="welcome-title">Welcome to AshNarrative</h2>
@@ -88,6 +90,98 @@
       </div>`;
 
     contentEl.innerHTML = html;
+
+    // Load recent posts from content sections
+    try {
+      const postSections = ['lab-notes', 'projects', 'musings'];
+      const allPosts = [];
+
+      await Promise.all(postSections.map(async (section) => {
+        try {
+          const indexRaw = await fetchContent(`content/${section}/index.txt`);
+          const slugs = ContentParser.parseIndex(indexRaw).slice(0, 2);
+
+          await Promise.all(slugs.map(async (slug) => {
+            try {
+              const raw = await fetchContent(`content/${section}/${slug}.txt`);
+              const { meta } = ContentParser.parseFrontmatter(raw);
+              allPosts.push({ section, slug, meta });
+            } catch { /* skip individual post failures */ }
+          }));
+        } catch { /* skip section failures */ }
+      }));
+
+      if (allPosts.length === 0) return;
+
+      // Sort by date descending, take top 5
+      allPosts.sort((a, b) => {
+        const da = a.meta.date || '';
+        const db = b.meta.date || '';
+        return db.localeCompare(da);
+      });
+      const recent = allPosts.slice(0, 5);
+
+      let recentHtml = `
+      <div class="recent-posts">
+        <div class="section-header">
+          <h2>Latest from the Workbench</h2>
+        </div>
+        <div class="post-list">`;
+
+      for (const post of recent) {
+        const m = post.meta;
+        const sectionTitle = sections[post.section] ? sections[post.section].title : post.section;
+        recentHtml += `
+          <div class="post-card" onclick="location.hash='${post.section}/${post.slug}'">
+            <div class="post-title">${escapeHtml(m.title || post.slug)}</div>
+            <div class="post-date">${escapeHtml(m.date || '')}${sectionTitle ? ' · ' + escapeHtml(sectionTitle) : ''}</div>
+            ${m.excerpt ? `<div class="post-excerpt">${escapeHtml(m.excerpt)}</div>` : ''}
+            ${m.tags ? `<div class="post-tags">${m.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+          </div>`;
+      }
+
+      recentHtml += `
+        </div>
+      </div>`;
+
+      contentEl.innerHTML += recentHtml;
+    } catch { /* fail silently if recent posts can't be loaded */ }
+  }
+
+  // ── About ─────────────────────────────────────────────────
+  function renderAbout() {
+    contentEl.innerHTML = `
+      <div class="post-view">
+        <div class="post-header">
+          <h1>About the Author</h1>
+        </div>
+        <div class="post-body">
+          <div class="block block-text">
+            <p>
+              Welcome to AshNarrative — a personal corner of the internet dedicated to
+              electrical engineering, tinkering with circuits, and documenting the journey
+              from curious student to practicing engineer.
+            </p>
+            <p>
+              This site serves as a digital workbench: part lab notebook, part project log,
+              and part creative outlet. Here you'll find deep-dives into circuit theory,
+              hands-on build logs, and the occasional musing about shows, life, and everything
+              in between.
+            </p>
+          </div>
+          <div class="block block-heading h2">Contact</div>
+          <div class="block block-text">
+            <p>Feel free to reach out or follow along:</p>
+          </div>
+          <div class="block block-list">
+            <ul>
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Email</a></li>
+              <li><a href="#">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>`;
   }
 
   // ── Section List ──────────────────────────────────────────

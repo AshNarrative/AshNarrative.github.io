@@ -8,6 +8,9 @@
   const contentEl = document.getElementById('content');
   const navLinks = document.querySelectorAll('.nav-link');
 
+  // Pagination configuration
+  const POSTS_PER_PAGE = 4;
+
   // Section configuration
   const sections = {
     'lab-notes': {
@@ -34,9 +37,15 @@
 
   // ── Routing ───────────────────────────────────────────────
   function getRoute() {
-    const hash = window.location.hash.slice(1) || 'home';
-    const parts = hash.split('/');
-    return { section: parts[0], slug: parts[1] || null };
+    const raw = window.location.hash.slice(1) || 'home';
+    const [path, query] = raw.split('?');
+    const parts = path.split('/');
+    let page = 1;
+    if (query) {
+      const params = new URLSearchParams(query);
+      page = Math.max(1, parseInt(params.get('page'), 10) || 1);
+    }
+    return { section: parts[0], slug: parts[1] || null, page: page };
   }
 
   function navigate() {
@@ -56,7 +65,7 @@
     } else if (route.slug) {
       renderPost(route.section, route.slug);
     } else if (sections[route.section]) {
-      renderSection(route.section);
+      renderSection(route.section, route.page);
     } else {
       renderHome();
     }
@@ -185,7 +194,7 @@
   }
 
   // ── Section List ──────────────────────────────────────────
-  async function renderSection(section) {
+  async function renderSection(section, page) {
     const info = sections[section];
     contentEl.innerHTML = `<div class="loading">Loading ${info.title}...</div>`;
 
@@ -216,6 +225,13 @@
 
       const validPosts = posts.filter(Boolean);
 
+      // Pagination
+      const totalPosts = validPosts.length;
+      const totalPages = Math.max(1, Math.ceil(totalPosts / POSTS_PER_PAGE));
+      const currentPage = Math.min(page || 1, totalPages);
+      const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+      const pagePosts = validPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+
       let html = `
         <div class="section-header">
           <h2>${info.icon} ${info.title}</h2>
@@ -223,7 +239,7 @@
         </div>
         <div class="post-list">`;
 
-      for (const post of validPosts) {
+      for (const post of pagePosts) {
         const m = post.meta;
         html += `
           <div class="post-card" onclick="location.hash='${section}/${post.slug}'">
@@ -235,6 +251,11 @@
       }
 
       html += `</div>`;
+
+      if (totalPages > 1) {
+        html += renderPagination(section, currentPage, totalPages);
+      }
+
       contentEl.innerHTML = html;
 
     } catch (e) {
@@ -245,6 +266,36 @@
         </div>
         <div class="empty-state">No posts yet. Create content/${section}/index.txt to get started.</div>`;
     }
+  }
+
+  // ── Pagination Renderer ──────────────────────────────────
+  function renderPagination(section, currentPage, totalPages) {
+    let html = '<nav class="pagination">';
+
+    if (currentPage > 1) {
+      html += `<a href="#${section}?page=${currentPage - 1}" class="pagination-link pagination-prev">← Previous</a>`;
+    } else {
+      html += `<span class="pagination-link pagination-prev disabled">← Previous</span>`;
+    }
+
+    html += '<span class="pagination-numbers">';
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === currentPage) {
+        html += `<span class="pagination-link active">${i}</span>`;
+      } else {
+        html += `<a href="#${section}?page=${i}" class="pagination-link">${i}</a>`;
+      }
+    }
+    html += '</span>';
+
+    if (currentPage < totalPages) {
+      html += `<a href="#${section}?page=${currentPage + 1}" class="pagination-link pagination-next">Next →</a>`;
+    } else {
+      html += `<span class="pagination-link pagination-next disabled">Next →</span>`;
+    }
+
+    html += '</nav>';
+    return html;
   }
 
   // ── Single Post ───────────────────────────────────────────

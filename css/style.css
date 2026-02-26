@@ -1,29 +1,29 @@
 /* ============================================================
-   AshNarrative — Vintage Workshop / Blueprint Personal Homepage
-   Dark forest green · Warm amber drafting paper · Copper accents
+   AshNarrative — Dark Library / Gentleman's Study
+   Dark navy-charcoal sidebar · Warm amber drafting paper · Copper accents
    ============================================================ */
 
 /* --- Fonts --- */
 /* Loaded via <link> in index.html for better performance */
 
 :root {
-  /* Blueprint Workshop palette */
-  --bg-page:         #1a2e1e;  /* dark forest — body fallback */
-  --bg-sidebar:      #1a2e1e;  /* forest green panel */
-  --bg-sidebar-alt:  #243d28;  /* slightly lighter green on hover */
+  /* Dark Library palette */
+  --bg-page:         #1c1e2a;  /* deep charcoal-navy */
+  --bg-sidebar:      #14161f;  /* very dark navy-black */
+  --bg-sidebar-alt:  #1e2030;  /* slightly lighter navy on hover */
   --bg-content:      #ede0c4;  /* warm amber drafting paper */
   --bg-card:         #f7f0de;  /* cream card surface */
   --bg-card-hover:   #ede4c8;  /* slightly deeper cream */
   --text-primary:    #1e1408;  /* rich dark ink */
   --text-secondary:  #4e3c20;  /* medium amber-brown */
-  --text-sidebar:    #7ab880;  /* sage green */
-  --text-sidebar-hi: #c0eac4;  /* light sage highlight */
+  --text-sidebar:    #8a8ea8;  /* muted silver-lavender */
+  --text-sidebar-hi: #d4d0c0;  /* warm ivory highlight */
   --accent:          #b86e18;  /* copper accent */
   --accent-hover:    #cc8028;  /* brighter copper */
-  --accent-link:     #2a5c44;  /* deep forest teal */
-  --accent-link-hv:  #1e4a38;  /* darker teal */
+  --accent-link:     #6b4423;  /* warm brown */
+  --accent-link-hv:  #8b5a30;  /* lighter warm brown */
   --border-color:    #a08840;  /* warm gold border */
-  --border-sidebar:  #2c4e30;  /* dark sage border */
+  --border-sidebar:  #2a2c3a;  /* dark slate border */
 
   --font-body:  'Lora', Georgia, 'Times New Roman', serif;
   --font-mono:  'IBM Plex Mono', 'Courier New', 'Courier', monospace;
@@ -49,7 +49,7 @@ body {
 a {
   color: var(--accent-link);
   text-decoration: underline;
-  text-decoration-color: rgba(42,92,68,0.35);
+  text-decoration-color: rgba(107,68,35,0.35);
 }
 a:hover {
   color: var(--accent-link-hv);
@@ -70,12 +70,13 @@ a:hover {
 .sidebar {
   width: var(--sidebar-width);
   min-height: 100vh;
-  background: var(--bg-sidebar);
+  background: linear-gradient(to right, #14161f 0%, #1a1c28 85%, #1e2030 100%);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  /* Decorative double-line right border */
-  border-right: 4px double var(--border-sidebar);
+  /* Refined dark slate right border with inner shadow */
+  border-right: 3px solid var(--border-sidebar);
+  box-shadow: inset -4px 0 12px rgba(0,0,0,0.3);
   position: fixed;
   top: 0;
   left: 0;
@@ -85,7 +86,7 @@ a:hover {
 
 .sidebar-header {
   padding: 1.4rem 1rem 1rem;
-  border-bottom: 2px solid var(--border-sidebar);
+  border-bottom: 1px solid rgba(184,110,24,0.3);
   text-align: center;
 }
 
@@ -100,6 +101,7 @@ a:hover {
 .site-title a {
   color: var(--text-sidebar-hi);
   text-decoration: none;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 .site-title a:hover {
   color: var(--text-sidebar);
@@ -126,14 +128,14 @@ a:hover {
 
 .nav-link {
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   padding: 0.5rem 1rem;
   color: var(--text-sidebar);
   text-decoration: none;
   border-left: 3px solid transparent;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.5px;
   display: block;
-  text-transform: uppercase;
+  text-transform: none;
 }
 .nav-link:hover {
   color: var(--text-sidebar-hi);
@@ -150,7 +152,7 @@ a:hover {
 
 .sidebar-footer {
   padding: 0.8rem 1rem;
-  border-top: 2px solid var(--border-sidebar);
+  border-top: 1px solid rgba(184,110,24,0.3);
   margin-top: auto;
   text-align: center;
 }
@@ -435,8 +437,8 @@ a:hover {
 }
 
 .post-body .block-code {
-  background: #1a1e0c;
-  border: 2px solid #3a4018;
+  background: #1a1a22;
+  border: 2px solid #2a2c3a;
   border-left: 5px solid var(--accent);
   padding: 0.9rem 1.1rem;
   overflow-x: auto;
@@ -445,7 +447,7 @@ a:hover {
 .post-body .block-code pre {
   font-family: var(--font-mono);
   font-size: 0.83rem;
-  color: #a8d060;
+  color: #c4a76c;
   white-space: pre;
   line-height: 1.65;
 }
@@ -537,7 +539,7 @@ a:hover {
   left: 0;
   right: 0;
   padding: 0.4rem 0.8rem;
-  background: rgba(15,28,12,0.88);
+  background: rgba(20,22,31,0.88);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--text-sidebar-hi);
@@ -549,7 +551,7 @@ a:hover {
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(8,18,8,0.95);
+  background: rgba(14,16,25,0.95);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -628,7 +630,7 @@ a:hover {
     width: 100%;
     min-height: auto;
     border-right: none;
-    border-bottom: 3px double var(--border-sidebar);
+    border-bottom: 2px solid var(--border-sidebar);
   }
   .page-layout {
     flex-direction: column;

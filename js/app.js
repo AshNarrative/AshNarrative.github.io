@@ -67,12 +67,10 @@
   function renderHome() {
     let html = `
       <div class="home-section">
-        <h2 class="welcome-title">Welcome to Signal &amp; Noise</h2>
+        <h2 class="welcome-title">Welcome to AshNarrative</h2>
         <p class="welcome-text">
           A personal space for electrical engineering notes, project logs,
           random musings about shows and life, and a gallery of memorable moments.
-          Everything here is rendered from plain <strong>.txt</strong> files — no backend, no databases,
-          just pure HTML, CSS, and JavaScript.
         </p>
         <div class="home-grid">`;
 

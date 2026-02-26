@@ -43,7 +43,7 @@
     let page = 1;
     if (query) {
       const params = new URLSearchParams(query);
-      page = Math.max(1, parseInt(params.get('page'), 10) || 1);
+      page = parseInt(params.get('page'), 10) || 1;
     }
     return { section: parts[0], slug: parts[1] || null, page: page };
   }
@@ -228,7 +228,7 @@
       // Pagination
       const totalPosts = validPosts.length;
       const totalPages = Math.max(1, Math.ceil(totalPosts / POSTS_PER_PAGE));
-      const currentPage = Math.min(page || 1, totalPages);
+      const currentPage = Math.min(page, totalPages);
       const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
       const pagePosts = validPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 

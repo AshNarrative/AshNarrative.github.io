@@ -216,6 +216,12 @@
 
       const validPosts = posts.filter(Boolean);
 
+      validPosts.sort((a, b) => {
+        const da = a.meta.date || '';
+        const db = b.meta.date || '';
+        return db.localeCompare(da);
+      });
+
       let html = `
         <div class="section-header">
           <h2>${info.icon} ${info.title}</h2>

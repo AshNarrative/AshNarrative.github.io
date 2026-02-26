@@ -220,7 +220,7 @@
     const container = document.getElementById('guestbook-comments');
     container.innerHTML = '';
     const script = document.createElement('script');
-    script.src = '/ext-lib/client.js';
+    script.src = 'https://utteranc.es/client.js';
     script.setAttribute('repo', 'AshNarrative/AshNarrative.github.io');
     script.setAttribute('issue-term', 'Guestbook');
     script.setAttribute('label', 'guestbook');

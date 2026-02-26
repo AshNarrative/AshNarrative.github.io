@@ -58,6 +58,8 @@
 
     if (route.section === 'home') {
       renderHome();
+    } else if (route.section === 'guestbook') {
+      renderGuestbook();
     } else if (route.section === 'about') {
       renderAbout();
     } else if (route.section === 'gallery') {
@@ -191,6 +193,41 @@
           </div>
         </div>
       </div>`;
+  }
+
+  // ── Guestbook ──────────────────────────────────────────────
+  function renderGuestbook() {
+    contentEl.innerHTML = `
+      <div class="post-view">
+        <div class="section-header">
+          <h2>[#] Guestbook</h2>
+          <p>Leave a message, share a thought, or just say hello.</p>
+        </div>
+        <div class="guestbook-intro block block-text">
+          <p>
+            Welcome to the guestbook! This space is powered by
+            <a href="https://utteranc.es/" target="_blank" rel="noopener noreferrer">Utterances</a>,
+            a lightweight commenting system built on GitHub Issues.
+            Sign in with your GitHub account to leave a message.
+          </p>
+        </div>
+        <div class="guestbook-comments" id="guestbook-comments">
+          <!-- Utterances widget injected here -->
+        </div>
+      </div>`;
+
+    // Inject Utterances script into the fresh container
+    const container = document.getElementById('guestbook-comments');
+    container.innerHTML = '';
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', 'AshNarrative/AshNarrative.github.io');
+    script.setAttribute('issue-term', 'Guestbook');
+    script.setAttribute('label', 'guestbook');
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+    container.appendChild(script);
   }
 
   // ── Section List ──────────────────────────────────────────

@@ -1,0 +1,14 @@
+---
+title: test2
+date: 2026-02-26
+tags: shows, movies, family-guy
+excerpt: consider as a cutaway from my web
+---
+
+[text]
+Look up! Maybe you can finaly find your star!
+
+[latex]
+\pi
+
+[divider]

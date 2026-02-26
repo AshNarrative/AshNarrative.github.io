@@ -196,7 +196,7 @@
       if (slugs.length === 0) {
         contentEl.innerHTML = `
           <div class="section-header">
-            <h2>${info.icon} ${info.title}</h2>
+            <h2>${info.title}</h2>
             <p>${info.desc}</p>
           </div>
           <div class="empty-state">No posts yet. Add .txt files to content/${section}/ to get started.</div>`;
@@ -218,7 +218,7 @@
 
       let html = `
         <div class="section-header">
-          <h2>${info.icon} ${info.title}</h2>
+          <h2>${info.title}</h2>
           <p>${info.desc}</p>
         </div>
         <div class="post-list">`;
@@ -240,7 +240,7 @@
     } catch (e) {
       contentEl.innerHTML = `
         <div class="section-header">
-          <h2>${info.icon} ${info.title}</h2>
+          <h2>${info.title}</h2>
           <p>${info.desc}</p>
         </div>
         <div class="empty-state">No posts yet. Create content/${section}/index.txt to get started.</div>`;
@@ -302,7 +302,7 @@
       if (images.length === 0) {
         contentEl.innerHTML = `
           <div class="section-header">
-            <h2>${info.icon} ${info.title}</h2>
+            <h2>${info.title}</h2>
             <p>${info.desc}</p>
           </div>
           <div class="empty-state">No images yet. Add [image] blocks to content/gallery/index.txt.</div>`;
@@ -311,7 +311,7 @@
 
       let html = `
         <div class="section-header">
-          <h2>${info.icon} ${info.title}</h2>
+          <h2>${info.title}</h2>
           <p>${meta.description || info.desc}</p>
         </div>
         <div class="gallery-grid">`;
@@ -333,7 +333,7 @@
     } catch {
       contentEl.innerHTML = `
         <div class="section-header">
-          <h2>${info.icon} ${info.title}</h2>
+          <h2>${info.title}</h2>
           <p>${info.desc}</p>
         </div>
         <div class="empty-state">No gallery yet. Create content/gallery/index.txt to get started.</div>`;

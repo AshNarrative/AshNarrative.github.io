@@ -1,0 +1,31 @@
+name: Dependency Monitor
+
+on:
+  schedule:
+    - cron: '13 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  check-external-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check KaTeX CDN assets
+        run: |
+          set -euo pipefail
+          urls=(
+            "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+            "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+            "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+          )
+          for url in "${urls[@]}"; do
+            code=$(curl -sS -o /dev/null -w "%{http_code}" "$url")
+            echo "$url -> $code"
+            test "$code" = "200"
+          done
+
+      - name: Check Utterances endpoint
+        run: |
+          set -euo pipefail
+          code=$(curl -sS -o /dev/null -w "%{http_code}" "https://utteranc.es/client.js")
+          echo "https://utteranc.es/client.js -> $code"
+          test "$code" = "200"

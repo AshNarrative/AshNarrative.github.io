@@ -74,7 +74,10 @@
   }
 
   window.addEventListener('hashchange', navigate);
-  window.addEventListener('DOMContentLoaded', navigate);
+  window.addEventListener('DOMContentLoaded', () => {
+    renderFooterLastUpdated();
+    navigate();
+  });
 
   // ── Home ──────────────────────────────────────────────────
   async function renderHome() {
@@ -227,6 +230,33 @@
     script.setAttribute('theme', 'github-light');
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
+
+    const fallbackHtml = `
+      <div class="dependency-notice">
+        Guestbook comments are temporarily unavailable.
+        You can still leave a note directly on GitHub:
+        <a href="https://github.com/AshNarrative/AshNarrative.github.io/issues" target="_blank" rel="noopener noreferrer">open issues</a>.
+      </div>`;
+
+    let settled = false;
+    const fallbackTimer = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      container.innerHTML = fallbackHtml;
+    }, 6000);
+
+    script.addEventListener('load', () => {
+      settled = true;
+      clearTimeout(fallbackTimer);
+    });
+
+    script.addEventListener('error', () => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(fallbackTimer);
+      container.innerHTML = fallbackHtml;
+    });
+
     container.appendChild(script);
   }
 
@@ -363,6 +393,9 @@
 
       // Activate KaTeX on rendered content
       ContentRenderer.activateLatex(contentEl);
+      if (window.__depStatus && window.__depStatus.katexCdnFailed) {
+        renderDependencyNotice('Math rendering CDN failed. Using local fallback mode.');
+      }
 
     } catch (e) {
       contentEl.innerHTML = `
@@ -447,6 +480,34 @@
   };
 
   // ── Helpers ───────────────────────────────────────────────
+
+  function renderDependencyNotice(message) {
+    const existing = contentEl.querySelector('.dependency-notice');
+    if (existing) return;
+    const notice = document.createElement('div');
+    notice.className = 'dependency-notice';
+    notice.textContent = message;
+    contentEl.prepend(notice);
+  }
+
+  function renderFooterLastUpdated() {
+    const el = document.getElementById('footer-last-updated');
+    if (!el) return;
+
+    const source = document.lastModified;
+    const dt = source ? new Date(source) : new Date();
+    if (Number.isNaN(dt.getTime())) {
+      el.textContent = 'Unknown';
+      return;
+    }
+
+    el.textContent = dt.toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  }
+
   async function fetchContent(path) {
     const res = await fetch(path);
     if (!res.ok) throw new Error(`Failed to fetch ${path}: ${res.status}`);

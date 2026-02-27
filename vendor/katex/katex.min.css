@@ -1,0 +1,8 @@
+.katex-fallback-notice {
+  margin: 0.75rem 0;
+  padding: 0.55rem 0.75rem;
+  border: 1px dashed #a08840;
+  background: #f7f0de;
+  color: #4e3c20;
+  font-size: 0.85rem;
+}

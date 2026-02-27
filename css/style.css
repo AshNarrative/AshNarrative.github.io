@@ -622,6 +622,13 @@ a:hover {
   padding: 1.4rem;
   box-shadow: 3px 4px 10px rgba(60,40,10,0.12);
 }
+.guestbook-frame {
+  display: block;
+  width: 100%;
+  min-height: 720px;
+  border: 1px solid var(--border-color);
+  background: #fff;
+}
 .guestbook-comments .utterances {
   max-width: 100%;
 }

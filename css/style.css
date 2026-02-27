@@ -196,25 +196,23 @@ a:hover {
 
 /* --- Sidebar Webring --- */
 .webring {
-  margin: 0.8rem 0.75rem 1rem;
-  padding: 0.6rem 0.48rem 0.7rem;
-  border: 2px double var(--border-color);
-  background:
-    linear-gradient(180deg, rgba(247,240,222,0.95), rgba(237,224,196,0.7));
-  box-shadow: inset 0 0 0 1px rgba(160,136,64,0.35), 1px 2px 6px rgba(72, 45, 8, 0.12);
+  margin: 0.8rem 0.7rem 1rem;
+  padding: 0.7rem 0.5rem 0.8rem;
+  border: 2px solid var(--border-color);
+  background: rgba(247, 240, 222, 0.5);
 }
 .webring-title {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-family: var(--font-mono);
   color: var(--accent);
-  letter-spacing: 0.07em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   margin-bottom: 0.2rem;
   text-align: center;
 }
 .webring-copy {
-  font-size: 0.62rem;
-  line-height: 1.4;
+  font-size: 0.66rem;
+  line-height: 1.35;
   color: var(--text-secondary);
   margin-bottom: 0.55rem;
   text-align: center;
@@ -223,17 +221,16 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(2, 88px);
   justify-content: center;
-  gap: 0.34rem;
-  margin-bottom: 0.5rem;
+  gap: 0.3rem;
+  margin-bottom: 0.55rem;
 }
 .webring-badge {
   display: inline-block;
   width: 88px;
   height: 31px;
-  border: 1px solid rgba(160, 136, 64, 0.75);
+  border: 1px solid rgba(160, 136, 64, 0.8);
   text-decoration: none;
-  background: #111;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  background: #000;
 }
 .webring-badge img {
   display: block;
@@ -243,32 +240,31 @@ a:hover {
   image-rendering: pixelated;
 }
 .webring-badge:hover {
-  transform: translateY(-1px);
   border-color: var(--accent);
-  box-shadow: 0 0 0 1px rgba(184, 110, 24, 0.32), 0 2px 5px rgba(72,45,8,0.22);
+  box-shadow: 0 0 0 1px rgba(184, 110, 24, 0.35);
 }
 .webring-controls {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 .webring-control {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.01em;
+  font-size: 0.61rem;
   text-align: center;
   text-decoration: none;
   color: var(--text-sidebar-hi);
-  border: 1px solid rgba(160, 136, 64, 0.9);
-  padding: 0.16rem 0.1rem;
-  background: rgba(247, 240, 222, 0.9);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.1rem;
+  background: rgba(237, 224, 196, 0.8);
 }
 .webring-control:hover {
   color: var(--accent);
   border-color: var(--accent);
-  background: rgba(184, 110, 24, 0.12);
+  background: rgba(184, 110, 24, 0.1);
 }
+
 .sidebar-footer {
   padding: 0.8rem 1.2rem;
   border-top: 1px solid var(--border-color);
@@ -897,14 +893,13 @@ a:hover {
     border-bottom-color: var(--accent);
   }
   .webring {
-    margin: 0 0.7rem 0.8rem;
+    margin: 0 0.8rem 0.8rem;
   }
   .webring-badges {
     grid-template-columns: repeat(auto-fit, minmax(88px, 88px));
-    gap: 0.28rem;
   }
   .webring-control {
-    font-size: 0.62rem;
+    font-size: 0.66rem;
   }
   .sidebar-footer { display: none; }
   .main-content { padding: 1.4rem 1.2rem; }

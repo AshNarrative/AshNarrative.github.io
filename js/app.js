@@ -11,6 +11,10 @@
   // Pagination configuration
   const POSTS_PER_PAGE = 4;
 
+  // Guestbook provider toggle
+  // Change this to 'utterances' to switch back to the previous GitHub-Issues guestbook.
+  const GUESTBOOK_PROVIDER = 'atabook';
+
   // Section configuration
   const sections = {
     'lab-notes': {
@@ -200,6 +204,9 @@
 
   // ── Guestbook ──────────────────────────────────────────────
   function renderGuestbook() {
+    const usingAtabook = GUESTBOOK_PROVIDER === 'atabook';
+    const providerLabel = usingAtabook ? 'atabook.org' : 'Utterances';
+
     contentEl.innerHTML = `
       <div class="post-view">
         <div class="section-header">
@@ -208,17 +215,27 @@
         </div>
         <div class="guestbook-intro block block-text">
           <p>
-            Welcome to the guestbook! This space is powered by
-            <a href="https://utteranc.es/" target="_blank" rel="noopener noreferrer">Utterances</a>,
-            a lightweight commenting system built on GitHub Issues.
-            Sign in with your GitHub account to leave a message.
+            Welcome to the guestbook! This space is currently powered by
+            <a href="${usingAtabook ? 'https://www.atabook.org/' : 'https://utteranc.es/'}" target="_blank" rel="noopener noreferrer">${providerLabel}</a>.
+            ${usingAtabook
+              ? 'You can sign directly in the embedded guestbook below.'
+              : 'Sign in with your GitHub account to leave a message.'}
           </p>
         </div>
         <div class="guestbook-comments" id="guestbook-comments">
-          <!-- Utterances widget injected here -->
+          <!-- Guestbook widget injected here -->
         </div>
       </div>`;
 
+    if (usingAtabook) {
+      renderAtabookGuestbook();
+      return;
+    }
+
+    renderUtterancesGuestbook();
+  }
+
+  function renderUtterancesGuestbook() {
     // Inject Utterances script into the fresh container
     const container = document.getElementById('guestbook-comments');
     container.innerHTML = '';
@@ -258,6 +275,31 @@
     });
 
     container.appendChild(script);
+  }
+
+  function renderAtabookGuestbook() {
+    const container = document.getElementById('guestbook-comments');
+    container.innerHTML = '';
+
+    const frame = document.createElement('iframe');
+    frame.src = 'https://ashnarrative.atabook.org/';
+    frame.className = 'guestbook-frame';
+    frame.loading = 'lazy';
+    frame.title = 'Ash Narrative Atabook Guestbook';
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+
+    const fallbackHtml = `
+      <div class="dependency-notice">
+        The embedded Atabook guestbook could not be loaded here.
+        You can still use it directly at
+        <a href="https://ashnarrative.atabook.org/" target="_blank" rel="noopener noreferrer">ashnarrative.atabook.org</a>.
+      </div>`;
+
+    frame.addEventListener('error', () => {
+      container.innerHTML = fallbackHtml;
+    });
+
+    container.appendChild(frame);
   }
 
   // ── Section List ──────────────────────────────────────────

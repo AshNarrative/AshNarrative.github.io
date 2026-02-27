@@ -15,6 +15,18 @@
   // Change this to 'utterances' to switch back to the previous GitHub-Issues guestbook.
   const GUESTBOOK_PROVIDER = 'atabook';
 
+  const webringSites = [
+    { href: 'https://webring.xxiivv.com', img: 'img/webring/solder-club.svg', alt: 'Solder Club button' },
+    { href: 'https://webring.xxiivv.com', img: 'img/webring/analog-garden.svg', alt: 'Analog Garden button' },
+    { href: 'https://webring.xxiivv.com', img: 'img/webring/tube-lab.svg', alt: 'Tube Lab button' },
+    { href: 'https://webring.xxiivv.com', img: 'img/webring/pixel-bench.svg', alt: 'Pixel Bench button' },
+    { href: 'https://webring.xxiivv.com', img: 'img/webring/oscillo-town.svg', alt: 'Oscillo Town button' },
+    { href: 'https://webring.xxiivv.com', img: 'img/webring/retro-cad.svg', alt: 'Retro CAD button' },
+    { href: 'https://webring.xxiivv.com', img: 'img/webring/ham-shack.svg', alt: 'Ham Shack button' },
+    { href: 'https://webring.xxiivv.com', img: 'img/webring/maker-orbit.svg', alt: 'Maker Orbit button' },
+    { href: 'https://webring.xxiivv.com', img: 'content/gallery/upload/StormBackground.gif', alt: 'Animated storm button' }
+  ];
+
   // Section configuration
   const sections = {
     'lab-notes': {
@@ -36,6 +48,11 @@
       title: 'Gallery',
       desc: 'Memorable moments and images worth sharing.',
       icon: '[*]'
+    },
+    'webring': {
+      title: 'Webring',
+      desc: 'Neighbors, labs, and cool handmade sites from around the web.',
+      icon: '[∞]'
     }
   };
 
@@ -68,6 +85,8 @@
       renderAbout();
     } else if (route.section === 'gallery') {
       renderGallery();
+    } else if (route.section === 'webring') {
+      renderWebring();
     } else if (route.slug) {
       renderPost(route.section, route.slug);
     } else if (sections[route.section]) {
@@ -80,64 +99,8 @@
   window.addEventListener('hashchange', navigate);
   window.addEventListener('DOMContentLoaded', () => {
     renderFooterLastUpdated();
-    initWebringControls();
     navigate();
   });
-
-
-
-  function initWebringControls() {
-    const ring = document.querySelector('[data-webring]');
-    if (!ring) return;
-
-    const badgeLinks = Array.from(ring.querySelectorAll('.webring-badge'));
-    if (badgeLinks.length === 0) return;
-
-    const prevBtn = ring.querySelector('[data-webring-nav="prev"]');
-    const nextBtn = ring.querySelector('[data-webring-nav="next"]');
-    const randomBtn = ring.querySelector('[data-webring-nav="random"]');
-
-    let current = 0;
-
-    function applyHref(btn, idx) {
-      if (!btn || !badgeLinks[idx]) return;
-      btn.href = badgeLinks[idx].href;
-      btn.title = 'Open: ' + (badgeLinks[idx].querySelector('img')?.alt || badgeLinks[idx].href);
-    }
-
-    function refreshControls() {
-      const prevIndex = (current - 1 + badgeLinks.length) % badgeLinks.length;
-      const nextIndex = (current + 1) % badgeLinks.length;
-      applyHref(prevBtn, prevIndex);
-      applyHref(nextBtn, nextIndex);
-    }
-
-    refreshControls();
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        current = (current - 1 + badgeLinks.length) % badgeLinks.length;
-        refreshControls();
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        current = (current + 1) % badgeLinks.length;
-        refreshControls();
-      });
-    }
-
-    if (randomBtn) {
-      randomBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const randomIndex = Math.floor(Math.random() * badgeLinks.length);
-        current = randomIndex;
-        refreshControls();
-        window.open(badgeLinks[randomIndex].href, '_blank', 'noopener');
-      });
-    }
-  }
 
   // ── Home ──────────────────────────────────────────────────
   async function renderHome() {
@@ -557,6 +520,50 @@
         </div>
         <div class="empty-state">No gallery yet. Create content/gallery/index.txt to get started.</div>`;
     }
+  }
+
+  function renderWebring() {
+    const featured = webringSites[0];
+
+    let html = `
+      <div class="webring-page">
+        <div class="section-header">
+          <h2>[∞] Webring</h2>
+          <p>Neighbors, labs, and weird corners of the old web.</p>
+        </div>
+        <div class="webring-hero">
+          <div class="webring-hero-copy">
+            <h3>Neighboring Workbenches</h3>
+            <p>
+              This ring collects 88x31 badges from sites I like browsing.
+              Explore the links below to hop across electronics labs, retro build logs,
+              and personal pages that still feel handmade.
+            </p>
+          </div>
+          <a href="${escapeAttr(featured.href)}" class="webring-featured" target="_blank" rel="noopener noreferrer">
+            <img src="${escapeAttr(featured.img)}" alt="${escapeAttr(featured.alt)}" width="88" height="31" loading="lazy">
+            <span>Enter the ring ↗</span>
+          </a>
+        </div>
+        <div class="webring-grid" aria-label="Webring links">`;
+
+    webringSites.forEach(site => {
+      html += `
+          <a href="${escapeAttr(site.href)}" class="webring-badge" target="_blank" rel="noopener noreferrer">
+            <img src="${escapeAttr(site.img)}" alt="${escapeAttr(site.alt)}" width="88" height="31" loading="lazy">
+          </a>`;
+    });
+
+    html += `
+        </div>
+        <div class="webring-page-controls">
+          <a href="https://webring.xxiivv.com/#random" class="pagination-link" target="_blank" rel="noopener noreferrer">◂ Previous</a>
+          <a href="https://webring.xxiivv.com" class="pagination-link" target="_blank" rel="noopener noreferrer">Random site</a>
+          <a href="https://webring.xxiivv.com/#random" class="pagination-link" target="_blank" rel="noopener noreferrer">Next ▸</a>
+        </div>
+      </div>`;
+
+    contentEl.innerHTML = html;
   }
 
   // ── Lightbox ──────────────────────────────────────────────

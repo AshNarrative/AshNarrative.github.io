@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="31" viewBox="0 0 88 31" role="img" aria-label="TUBE LAB">
+<rect width="88" height="31" fill="#6b3e26"/>
+<rect x="1" y="1" width="86" height="29" fill="none" stroke="#ffd6a5" stroke-width="1"/>
+<circle cx="10" cy="15.5" r="5" fill="#ffd6a5" opacity="0.85"/>
+<circle cx="78" cy="15.5" r="5" fill="#ffd6a5" opacity="0.85"/>
+<text x="44" y="19" text-anchor="middle" font-size="8" font-family="'IBM Plex Mono', monospace" fill="#ffd6a5" letter-spacing="0.6">TUBE LAB</text>
+</svg>

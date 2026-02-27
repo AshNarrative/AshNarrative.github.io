@@ -80,8 +80,64 @@
   window.addEventListener('hashchange', navigate);
   window.addEventListener('DOMContentLoaded', () => {
     renderFooterLastUpdated();
+    initWebringControls();
     navigate();
   });
+
+
+
+  function initWebringControls() {
+    const ring = document.querySelector('[data-webring]');
+    if (!ring) return;
+
+    const badgeLinks = Array.from(ring.querySelectorAll('.webring-badge'));
+    if (badgeLinks.length === 0) return;
+
+    const prevBtn = ring.querySelector('[data-webring-nav="prev"]');
+    const nextBtn = ring.querySelector('[data-webring-nav="next"]');
+    const randomBtn = ring.querySelector('[data-webring-nav="random"]');
+
+    let current = 0;
+
+    function applyHref(btn, idx) {
+      if (!btn || !badgeLinks[idx]) return;
+      btn.href = badgeLinks[idx].href;
+      btn.title = 'Open: ' + (badgeLinks[idx].querySelector('img')?.alt || badgeLinks[idx].href);
+    }
+
+    function refreshControls() {
+      const prevIndex = (current - 1 + badgeLinks.length) % badgeLinks.length;
+      const nextIndex = (current + 1) % badgeLinks.length;
+      applyHref(prevBtn, prevIndex);
+      applyHref(nextBtn, nextIndex);
+    }
+
+    refreshControls();
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        current = (current - 1 + badgeLinks.length) % badgeLinks.length;
+        refreshControls();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        current = (current + 1) % badgeLinks.length;
+        refreshControls();
+      });
+    }
+
+    if (randomBtn) {
+      randomBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const randomIndex = Math.floor(Math.random() * badgeLinks.length);
+        current = randomIndex;
+        refreshControls();
+        window.open(badgeLinks[randomIndex].href, '_blank', 'noopener');
+      });
+    }
+  }
 
   // ── Home ──────────────────────────────────────────────────
   async function renderHome() {

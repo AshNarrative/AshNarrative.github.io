@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="31" viewBox="0 0 88 31" role="img" aria-label="RETRO CAD">
+<rect width="88" height="31" fill="#4a4e69"/>
+<rect x="1" y="1" width="86" height="29" fill="none" stroke="#f2e9e4" stroke-width="1"/>
+<circle cx="10" cy="15.5" r="5" fill="#f2e9e4" opacity="0.85"/>
+<circle cx="78" cy="15.5" r="5" fill="#f2e9e4" opacity="0.85"/>
+<text x="44" y="19" text-anchor="middle" font-size="8" font-family="'IBM Plex Mono', monospace" fill="#f2e9e4" letter-spacing="0.6">RETRO CAD</text>
+</svg>

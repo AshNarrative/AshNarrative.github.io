@@ -68,6 +68,8 @@
       renderAbout();
     } else if (route.section === 'gallery') {
       renderGallery();
+    } else if (route.section === 'webring') {
+      renderWebring();
     } else if (route.slug) {
       renderPost(route.section, route.slug);
     } else if (sections[route.section]) {
@@ -200,6 +202,40 @@
           </div>
         </div>
       </div>`;
+  }
+
+  // ── Webring ───────────────────────────────────────────────
+  function renderWebring() {
+    const links = [
+      { href: 'https://hackaday.com', img: 'img/webring/solder-club.svg', alt: 'Solder Club button' },
+      { href: 'https://www.righto.com', img: 'img/webring/analog-garden.svg', alt: 'Analog Garden button' },
+      { href: 'https://www.6502.org', img: 'img/webring/tube-lab.svg', alt: 'Tube Lab button' },
+      { href: 'https://www.sparkfun.com', img: 'img/webring/pixel-bench.svg', alt: 'Pixel Bench button' },
+      { href: 'https://www.adafruit.com', img: 'img/webring/oscillo-town.svg', alt: 'Oscillo Town button' },
+      { href: 'https://www.kohacraft.com', img: 'img/webring/retro-cad.svg', alt: 'Retro CAD button' },
+      { href: 'https://www.allaboutcircuits.com', img: 'img/webring/ham-shack.svg', alt: 'Ham Shack button' },
+      { href: 'https://webring.xxiivv.com', img: 'img/webring/maker-orbit.svg', alt: 'Maker Orbit button' },
+      { href: 'https://xkcd.com', img: 'content/gallery/upload/StormBackground.gif', alt: 'Animated storm button' }
+    ];
+
+    const badges = links.map(link => `
+      <a class="webring-tile" href="${link.href}" target="_blank" rel="noopener noreferrer">
+        <img src="${link.img}" alt="${link.alt}" width="88" height="31" loading="lazy">
+      </a>`).join('');
+
+    contentEl.innerHTML = `
+      <section class="webring-page">
+        <header class="webring-hero">
+          <h2>Webring / Neighbors</h2>
+          <p>A tiny-button wall of electronics blogs, retro computing sites, and fun corners of the indie web.</p>
+          <div class="webring-grid">${badges}</div>
+          <div class="webring-actions">
+            <a class="webring-action" href="https://webring.xxiivv.com/#random" target="_blank" rel="noopener noreferrer">Random Site</a>
+            <a class="webring-action" href="https://webring.xxiivv.com" target="_blank" rel="noopener noreferrer">Main Ring</a>
+          </div>
+          <p class="webring-note">Want to swap badges? Drop a note in the guestbook and I can add your 88x31 button here.</p>
+        </header>
+      </section>`;
   }
 
   // ── Guestbook ──────────────────────────────────────────────

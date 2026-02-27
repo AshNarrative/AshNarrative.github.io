@@ -192,6 +192,8 @@ a:hover {
   color: var(--accent);
 }
 
+
+
 .sidebar-footer {
   padding: 0.8rem 1.2rem;
   border-top: 1px solid var(--border-color);
@@ -752,6 +754,75 @@ a:hover {
   font-style: italic;
 }
 
+
+
+/* ============================================================
+   WEBRING PAGE
+   ============================================================ */
+.webring-page {
+  max-width: 900px;
+}
+.webring-hero {
+  border: 2px double var(--border-color);
+  padding: 1rem 1.1rem;
+  background: var(--bg-card);
+  margin-bottom: 1rem;
+}
+.webring-hero h2 {
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+.webring-hero p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+.webring-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 88px));
+  justify-content: start;
+  gap: 0.45rem;
+  margin: 0.9rem 0 1rem;
+}
+.webring-tile {
+  width: 88px;
+  height: 31px;
+  display: block;
+  border: 1px solid var(--border-color);
+  background: #111;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.webring-tile img {
+  width: 88px;
+  height: 31px;
+  object-fit: cover;
+  display: block;
+  image-rendering: pixelated;
+}
+.webring-tile:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+.webring-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.webring-action {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  padding: 0.28rem 0.55rem;
+  background: rgba(237,224,196,0.7);
+}
+.webring-note {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  border-top: 1px dashed var(--border-color);
+  padding-top: 0.6rem;
+}
+
 /* ============================================================
    ANIMATIONS — minimal, classic
    ============================================================ */
@@ -821,7 +892,11 @@ a:hover {
   }
   .sidebar-footer { display: none; }
   .main-content { padding: 1.4rem 1.2rem; }
+  .webring-grid {
+    justify-content: center;
+  }
 }
+
 
 /* --- Scrollbar --- */
 ::-webkit-scrollbar { width: 8px; }

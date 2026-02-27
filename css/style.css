@@ -645,6 +645,14 @@ a:hover {
   padding: 1.4rem;
   box-shadow: 3px 4px 10px rgba(60,40,10,0.12);
 }
+.guestbook-status {
+  margin-bottom: 0.9rem;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+.guestbook-status a {
+  color: var(--accent-link);
+}
 .guestbook-frame {
   display: block;
   width: 100%;

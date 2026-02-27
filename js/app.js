@@ -300,10 +300,15 @@
     const container = document.getElementById('guestbook-comments');
     container.innerHTML = '';
 
+    const status = document.createElement('div');
+    status.className = 'guestbook-status';
+    status.innerHTML = 'Loading guestbook… If it stays blank, <a href="https://ashnarrative.atabook.org/" target="_blank" rel="noopener noreferrer">open it in a new tab</a>.';
+    container.appendChild(status);
+
     const frame = document.createElement('iframe');
     frame.src = 'https://ashnarrative.atabook.org/';
     frame.className = 'guestbook-frame';
-    frame.loading = 'lazy';
+    frame.loading = 'eager';
     frame.title = 'Ash Narrative Atabook Guestbook';
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
 
@@ -314,7 +319,22 @@
         <a href="https://ashnarrative.atabook.org/" target="_blank" rel="noopener noreferrer">ashnarrative.atabook.org</a>.
       </div>`;
 
+    let settled = false;
+    const timeout = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      status.innerHTML = fallbackHtml;
+    }, 7000);
+
+    frame.addEventListener('load', () => {
+      settled = true;
+      clearTimeout(timeout);
+      status.remove();
+    });
+
     frame.addEventListener('error', () => {
+      settled = true;
+      clearTimeout(timeout);
       container.innerHTML = fallbackHtml;
     });
 

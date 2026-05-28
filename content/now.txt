@@ -1,0 +1,40 @@
+---
+title: Now
+date: 2026-05-27
+tags: now, life
+excerpt: A small, honest snapshot — updated when I remember.
+---
+
+[text]
+This is my “now” page. No brand, no performance. Just a quiet log of what I’m doing lately.
+
+[heading] Working on
+
+[list]
+- Writing a calmer personal site that feels like a room, not a résumé.
+- Keeping my projects small enough that they actually finish.
+- Learning to enjoy repetition: practice, review, refine.
+
+[heading] Reading / listening
+
+[list]
+- Reading: essays that feel like conversations, not sermons.
+- Listening: music that makes time feel slower (ambient, lo‑fi, old soundtracks, and whatever catches).
+- Rewatching: comfort shows when my brain needs a softer texture.
+
+[heading] Keeping myself sane
+
+[list]
+- One walk a day (even short).
+- One “clean desk” reset (5 minutes counts).
+- One finished task before I open ten tabs.
+
+[heading] Question I’m sitting with
+
+[text]
+What does “progress” look like when you don’t believe in a grand plan — only attention, practice, and people?
+
+[divider]
+
+[text]
+Last updated: 2026-05-27

@@ -1,0 +1,35 @@
+---
+title: Recs
+date: 2026-05-27
+tags: recommendations, music, books, links
+excerpt: Things I’d recommend without pretending they’ll change your life.
+---
+
+[text]
+I’m not trying to be a critic. These are just things that kept me company.
+
+[heading] Music for “quiet focus”
+
+[list]
+- Ambient / drone albums when you need to stop arguing with the clock.
+- Soundtracks that feel like old machines waking up.
+- Anything with a steady pulse and no demand for attention.
+
+[heading] Books (the kind that don’t shout)
+
+[list]
+- Short essays: the best form of thinking in public.
+- Science history: humans touching the edge of the unknown with messy hands.
+- Philosophy that admits uncertainty instead of hiding it.
+
+[heading] Links (old web energy)
+
+[list]
+- Personal homepages with imperfect handwriting and strong opinions.
+- Writeups where the author shows the process, not just the result.
+- Small tools that do one job well.
+
+[divider]
+
+[text]
+If you want, leave a note in the guestbook with your mood (tired / curious / angry / soft / focused) and I’ll reply with a few recs.

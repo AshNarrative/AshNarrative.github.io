@@ -1,3 +1,5 @@
 # Lab Notes - list one filename per line (without .txt extension)
-ohms-law-deep-dive
-rc-circuit-analysis
+signals-as-promises
+filters-as-attention
+debugging-with-a-meter
+three-equations-i-trust

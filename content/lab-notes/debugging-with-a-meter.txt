@@ -1,0 +1,38 @@
+---
+title: Debugging with a Meter (before you open 20 tabs)
+date: 2026-05-27
+tags: debugging, multimeter, habits
+excerpt: A small ritual that saves hours: measure first, theorize second.
+---
+
+[text]
+When a circuit doesn’t work, my brain wants to write a novel. The meter wants to write a receipt. The meter is usually right.
+
+[heading] The ritual
+
+[list]
+- Is power present? (at the chip, not “somewhere on the board”)
+- Is ground continuous?
+- Is the signal pinned where you expect? (stuck high? stuck low?)
+- Is anything getting hot?
+
+[heading] A boring checklist that feels like meditation
+
+[list]
+- Battery voltage under load.
+- Regulator output.
+- Reference voltages (if ADC / op-amp).
+- Continuity from connector to the pin.
+
+[heading] The idea
+
+[text]
+Measurement collapses the wavefunction of your speculation.
+
+[quote]
+Debugging is humility with tools.
+
+[divider]
+
+[text]
+Next: three equations I trust when I’m tired.

@@ -1,0 +1,41 @@
+---
+title: Three Equations I Trust When I’m Tired
+date: 2026-05-27
+tags: fundamentals, circuits, sanity
+excerpt: Not everything needs depth. Some things just need reliability.
+---
+
+[text]
+When I’m exhausted, I don’t want elegance. I want correctness. These three show up everywhere.
+
+[heading] 1) Ohm
+
+[latex]
+V = I R
+
+[text]
+If you can’t estimate current, you can’t estimate heat. If you can’t estimate heat, you’re guessing.
+
+[heading] 2) RC time constant
+
+[latex]
+\tau = R C
+
+[text]
+Not every weird behavior is “a bug”. Sometimes it’s just time.
+
+[heading] 3) Power
+
+[latex]
+P = V I
+
+[text]
+Power is the real currency. Everything else is bookkeeping.
+
+[quote]
+Small truths. Repeated. That’s how you build things.
+
+[divider]
+
+[text]
+These are not the only equations. They’re just the ones that still work at 2 a.m.

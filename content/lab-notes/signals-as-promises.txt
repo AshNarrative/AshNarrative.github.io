@@ -1,0 +1,46 @@
+---
+title: Signals as Promises (and why timing is moral)
+date: 2026-05-27
+tags: signals, timing, digital, fundamentals
+excerpt: A mental model: a signal is a promise you make to another part of the circuit.
+---
+
+[text]
+A digital signal looks clean on paper: 0 or 1, high or low. In reality it’s more like a promise made under constraints: rise time, noise, impedance, and the fact that the world is analog.
+
+[text]
+When a microcontroller pin flips, it’s not teleporting a value. It’s pushing charge into a network of capacitances and resistances. The “1” arrives with a shape, not a label.
+
+[heading] The promise
+
+[list]
+- Voltage level: “I will be above this threshold (most of the time).”
+- Timing: “I will be stable when you sample.”
+- Drive strength: “I can source/sink enough current without collapsing.”
+- Noise margin: “Small chaos won’t change the meaning.”
+
+[heading] A small equation I actually use
+
+[text]
+RC rise time isn’t a textbook detail — it’s the reason your edges become mush:
+
+[latex]
+\tau = R \cdot C
+
+[text]
+If your line has effective capacitance \(C\), and your output has effective resistance \(R\), then the edge is a slow negotiation, not a snap.
+
+[heading] Practical habit
+
+[list]
+- When something “randomly” fails, suspect timing before you suspect logic.
+- Probe the line, not the idea.
+- Add a pull-up or a small RC only after you understand what it’s fixing.
+
+[quote]
+A clean schematic is a prayer. A scope trace is a confession.
+
+[divider]
+
+[text]
+Next note: how filters are basically attention made physical.

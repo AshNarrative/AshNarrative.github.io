@@ -1,0 +1,46 @@
+---
+title: Filters as Attention
+date: 2026-05-27
+tags: filters, analog, mindset
+excerpt: A filter is the circuit’s way of deciding what to care about.
+---
+
+[text]
+A filter is not just math. It’s a decision: keep this, ignore that. That’s basically attention.
+
+[heading] The simplest filter
+
+[text]
+A first-order low-pass is the gentlest kind of “no”. It doesn’t reject; it softens.
+
+[latex]
+H(j\omega) = \frac{1}{1 + j\omega RC}
+
+[text]
+You can read it like this: at low frequency, the circuit is relaxed. At high frequency, it becomes skeptical.
+
+[heading] Why I like analog filters
+
+[list]
+- They’re honest about tradeoffs.
+- They don’t pretend noise can be deleted — only reduced, shaped, or moved.
+- They turn “attention” into a component choice.
+
+[heading] Practical rule of thumb
+
+[text]
+If your cutoff frequency is \(f_c\):
+
+[latex]
+f_c = \frac{1}{2\pi R C}
+
+[text]
+Pick two values that you can actually buy, then verify with a real signal.
+
+[quote]
+The world is too loud. A filter is a small act of kindness.
+
+[divider]
+
+[text]
+If you can build one filter and explain it in plain words, you’re already dangerous (in the good way).

@@ -1,34 +1,34 @@
 ---
 title: Gallery
-description: Memorable images and moments
+description: Small images from a life that includes solder, screens, and silence
 ---
 
 [image]
 src: /content/gallery/upload/def.png
-caption: Late night on the workbench — soldering up a new prototype
-alt: Electronics workbench with soldering iron
+caption: A desk that looks chaotic, but has a system I can explain.
+alt: Workbench / desk with tools and parts
 
 [image]
 src: /content/gallery/upload/def.png
-caption: Vintage oscilloscope traces — there's beauty in waveforms
+caption: Oscilloscope traces — proof that invisible things still have shape.
 alt: Oscilloscope display showing waveforms
 
 [image]
 src: /content/gallery/upload/def.png
-caption: Circuit boards — the landscapes of the micro world
+caption: A circuit board: mistakes made physical, then corrected.
 alt: Close-up of a printed circuit board
 
 [image]
 src: /content/gallery/upload/def.png
-caption: The glow of LEDs at midnight — debugging never looked so good
+caption: LEDs at midnight. Debugging, but with a little beauty.
 alt: LED lights glowing in the dark
 
 [image]
 src: /content/gallery/upload/def.png
-caption: Retro computing setup — where it all began
+caption: Retro computing vibes — when interfaces had edges and personalities.
 alt: Vintage computer setup
 
 [image]
 src: /content/gallery/upload/def.png
-caption: The signal meets the noise — sunset at the antenna farm
-alt: Technology and nature meeting at sunset
+caption: Signal meets noise: the world doesn’t stop being nature just because we built antennas.
+alt: Sunset scene with technology silhouettes

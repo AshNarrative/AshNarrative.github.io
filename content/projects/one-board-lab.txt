@@ -1,0 +1,36 @@
+---
+title: One-Board Lab (a portable, repeatable workbench)
+date: 2026-05-27
+tags: electronics, lab, tools, workflow
+excerpt: A single board that carries the basics: power, measurement points, and sanity.
+---
+
+[text]
+I want a “lab in a slab”: a small portable board that makes experiments repeatable.
+
+[heading] Features (target)
+
+[list]
+- Power input + protected 5V / 3.3V rails
+- Test points for rails + ground
+- A simple signal generator header (optional)
+- A small area for prototyping
+- Labels that stay readable
+
+[heading] Why it matters
+
+[text]
+Most of my time is not spent inventing — it’s spent rebuilding the same setup and rediscovering the same mistakes.
+
+[heading] The rule
+
+[text]
+If a setup repeats twice, it deserves a fixture.
+
+[quote]
+The monk version of engineering is: reduce friction, reduce waste, keep the essentials.
+
+[divider]
+
+[text]
+Next iteration: add a current measurement shunt + jumperable sections.

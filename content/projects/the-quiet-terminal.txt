@@ -1,0 +1,42 @@
+---
+title: The Quiet Terminal (a small tool for a loud world)
+date: 2026-05-27
+tags: software, terminal, productivity, minimal
+excerpt: A tiny program idea: one prompt, one task, no noise.
+---
+
+[text]
+I like terminals because they don’t beg for attention. They just wait.
+
+[text]
+This project is a concept: a minimal CLI that keeps a small “monk list” — a list that is short enough that it forces honesty.
+
+[heading] Principles
+
+[list]
+- One screen.
+- No endless backlog (hard limit like 7 items).
+- Items expire (if it matters, it returns).
+- No streaks. No gamification. Just practice.
+
+[heading] Commands (sketch)
+
+[code]
+quiet add "write one page"
+quiet done 2
+quiet now
+quiet clear
+quiet export
+
+[heading] Why build it?
+
+[text]
+Because my brain produces ambition faster than it produces time.
+
+[quote]
+A tool should reduce choices, not increase them.
+
+[divider]
+
+[text]
+If I ship this: I’ll publish it as a tiny repo and keep it boring on purpose.

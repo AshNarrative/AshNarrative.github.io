@@ -79,6 +79,18 @@
 
     if (route.section === 'home') {
       renderHome();
+    } else if (route.section === 'now') {
+      renderSinglePage('now', {
+        title: 'Now',
+        desc: 'What I’m up to lately.',
+        icon: '[~]'
+      });
+    } else if (route.section === 'recs') {
+      renderSinglePage('recs', {
+        title: 'Recs',
+        desc: 'Music, books, links — small favorites.',
+        icon: '[+]'
+      });
     } else if (route.section === 'guestbook') {
       renderGuestbook();
     } else if (route.section === 'about') {
@@ -108,8 +120,8 @@
       <div class="home-section">
         <h2 class="welcome-title">Welcome to AshNarrative</h2>
         <p class="welcome-text">
-          A personal space for electrical engineering notes, project logs,
-          random musings about shows and life, and a gallery of memorable moments.
+          A personal corner of the old web: short notes, recommendations, photos,
+          and occasional deep dives when I’m building something.
         </p>
         <div class="home-grid">`;
 
@@ -130,7 +142,7 @@
 
     // Load recent posts from content sections
     try {
-      const postSections = ['lab-notes', 'projects', 'musings'];
+      const postSections = ['musings', 'lab-notes', 'projects'];
       const allPosts = [];
 
       await Promise.all(postSections.map(async (section) => {
@@ -161,7 +173,7 @@
       let recentHtml = `
       <div class="recent-posts">
         <div class="section-header">
-          <h2>Latest from the Workbench</h2>
+          <h2>Recent posts</h2>
         </div>
         <div class="post-list">`;
 
@@ -183,6 +195,42 @@
 
       contentEl.innerHTML += recentHtml;
     } catch { /* fail silently if recent posts can't be loaded */ }
+  }
+
+  async function renderSinglePage(section, info) {
+    contentEl.innerHTML = `<div class="loading">Loading ${info.title}...</div>`;
+
+    try {
+      const raw = await fetchContent(`content/${section}.txt`);
+      const { meta, blocks } = ContentParser.parse(raw);
+
+      const title = meta.title || info.title;
+
+      contentEl.innerHTML = `
+        <div class="post-view">
+          <div class="section-header">
+            <h2>${info.icon} ${escapeHtml(title)}</h2>
+            <p>${escapeHtml(meta.excerpt || info.desc || '')}</p>
+          </div>
+          <div class="post-body">
+            ${ContentRenderer.renderBlocks(blocks)}
+          </div>
+        </div>`;
+
+      ContentRenderer.activateLatex(contentEl);
+      if (window.__depStatus && window.__depStatus.katexCdnFailed) {
+        renderDependencyNotice('Math rendering CDN failed. Using local fallback mode.');
+      }
+    } catch (e) {
+      contentEl.innerHTML = `
+        <div class="post-view">
+          <div class="section-header">
+            <h2>${info.icon} ${escapeHtml(info.title)}</h2>
+            <p>${escapeHtml(info.desc || '')}</p>
+          </div>
+          <div class="empty-state">Missing page: ${escapeHtml(`content/${section}.txt`)}</div>
+        </div>`;
+    }
   }
 
   // ── About ─────────────────────────────────────────────────

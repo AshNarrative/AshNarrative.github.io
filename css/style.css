@@ -67,7 +67,77 @@ a:hover {
   text-align: center;
   padding: 2rem 2rem 1.2rem;
   border-bottom: 3px double var(--border-color);
+
+  /* allow absolutely-positioned profile stamp */
+  position: relative;
 }
+
+/* --- Profile stamp (top-left) --- */
+.profile-stamp {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.95rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+
+  text-decoration: none;
+  padding: 0.55rem 0.7rem;
+  border: 3px double var(--border-color);
+  background: var(--bg-card);
+  box-shadow: 4px 6px 16px rgba(60,40,10,0.18);
+}
+
+.profile-stamp:hover {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  text-decoration: none;
+}
+
+.profile-stamp img {
+  width: 74px;
+  height: 74px;
+  border: 2px solid var(--border-color);
+  object-fit: cover;
+  display: block;
+
+  /* Slightly “printed” look without being noisy */
+  filter: contrast(1.03) saturate(0.98);
+}
+
+.profile-stamp-caption {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.1;
+}
+
+.profile-stamp-caption::before {
+  content: 'PROFILE';
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* keep it nice on small screens */
+@media (max-width: 768px) {
+  .profile-stamp {
+    position: static;
+    margin: 0 auto 0.7rem;
+    justify-content: center;
+  }
+  .profile-stamp img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
 .site-header .site-title {
   font-family: var(--font-body);
   font-size: 2rem;

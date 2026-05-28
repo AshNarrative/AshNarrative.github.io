@@ -1,0 +1,29 @@
+---
+title: The Holy of Small Things (without believing in holy)
+date: 2026-05-27
+tags: life, minimal, reflection
+excerpt: Some things feel sacred even when you refuse the word.
+---
+
+[text]
+There’s a kind of reverence you can have without believing in metaphysics.
+
+[text]
+Like cleaning a desk. Like making tea. Like writing one paragraph carefully. Like fixing a bug you didn’t cause.
+
+[heading] My version of sacred
+
+[list]
+- Attention given fully, even briefly
+- Work done cleanly
+- A promise kept
+- A quiet room
+- A tool that works exactly as intended
+
+[quote]
+Call it “holy” if you want. I call it “not wasting my life.”
+
+[divider]
+
+[text]
+I suspect meaning is something we manufacture, like circuits: component by component.

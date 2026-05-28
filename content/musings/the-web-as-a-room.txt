@@ -1,0 +1,25 @@
+---
+title: The Web as a Room
+date: 2026-05-27
+tags: web, design, personal
+excerpt: I’m not building a brand. I’m building a room I want to sit in.
+---
+
+[text]
+I want my site to feel like a room with a desk lamp on. Not a billboard.
+
+[heading] Room rules
+
+[list]
+- Easy to leave (no infinite scroll)
+- Easy to wander (links are doors)
+- No shouting (no autoplay, no popups, no chase)
+- A few objects with stories (projects, notes, photos, recs)
+
+[quote]
+If the internet is a city, I’m building a quiet apartment.
+
+[divider]
+
+[text]
+If you’re reading this: welcome. Stay as long as you like.

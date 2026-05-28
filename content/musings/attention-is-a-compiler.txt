@@ -1,0 +1,28 @@
+---
+title: Attention Is a Compiler
+date: 2026-05-27
+tags: programming, mind, analogy
+excerpt: Your day becomes whatever your attention can successfully compile.
+---
+
+[text]
+Code doesn’t run because you “meant well”. It runs because the system can compile it.
+
+[text]
+A day is similar. Intentions are source code. Attention is the compiler. If your attention is fragmented, your plan fails to build.
+
+[heading] Debugging the day
+
+[list]
+- Reduce dependencies (fewer apps, fewer promises).
+- Remove warnings (open loops you keep ignoring).
+- Build small (a task that fits in one sitting).
+- Ship (done beats “perfect maybe”).
+
+[quote]
+Distraction is a build error that feels like entertainment.
+
+[divider]
+
+[text]
+I’m trying to live like a boring program that always returns the correct value.

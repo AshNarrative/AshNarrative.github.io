@@ -1,6 +1,9 @@
 # Musings - list one filename per line (without .txt extension)
-family-guy-cut
-stranger-things-upside-down
-back-to-the-future-thoughts
-test1
-test2
+atheist-monk
+the-holy-of-small-things
+attention-is-a-compiler
+agnostic-prayer
+the-comfort-of-constraints
+notes-on-nostalgia
+being-wrong-in-public
+the-web-as-a-room

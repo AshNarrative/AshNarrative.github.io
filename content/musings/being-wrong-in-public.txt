@@ -1,0 +1,29 @@
+---
+title: Being Wrong in Public
+date: 2026-05-27
+tags: learning, humility, writing
+excerpt: I’m trying to treat mistakes as drafts, not verdicts.
+---
+
+[text]
+I used to think being wrong meant being stupid. Now I think being wrong is how you learn where your mind lied to you.
+
+[heading] My rule
+
+[text]
+If I write something and later discover I’m wrong, I don’t delete it. I annotate it.
+
+[heading] Why
+
+[list]
+- It keeps me honest.
+- It shows the path, not just the destination.
+- It makes learning visible instead of shameful.
+
+[quote]
+Truth is iterative.
+
+[divider]
+
+[text]
+Engineering taught me this: failure is data. Life is also data.

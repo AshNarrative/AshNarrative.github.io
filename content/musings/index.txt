@@ -1,8 +1,5 @@
 # Musings - list one filename per line (without .txt extension)
-the-holy-of-small-things
 attention-is-a-compiler
-agnostic-prayer
 the-comfort-of-constraints
 notes-on-nostalgia
-being-wrong-in-public
 the-web-as-a-room

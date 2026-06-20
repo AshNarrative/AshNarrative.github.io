@@ -1,0 +1,80 @@
+---
+title: Building a MUX From Transistors
+date: 2026-06-20
+tags: [multiplexer, RTL, discrete, transistors, electronics]
+excerpt: What happens when you refuse to use a chip and build a 2-to-1 multiplexer out of nothing but NPN transistors and resistors?
+---
+
+[text]
+A multiplexer is usually a black box. You learn it as a symbol on a datasheet, or a line in Verilog. But what if you strip away the abstraction and build one from scratch — no ICs, no shortcuts, just transistors and resistors? That was the rule for this project, and it turned out to be the best way to understand why digital logic actually works.
+
+[heading] The logic
+
+[text]
+A 2-to-1 MUX is just a conditional. If S is low, output D0. If S is high, output D1. In Boolean terms:
+
+[latex]
+Y = (D_0 \cdot \overline{S}) + (D_1 \cdot S)
+
+[text]
+The problem is, transistors don't naturally do AND-OR. They do NAND. So we flipped the whole expression using De Morgan's theorem:
+
+[latex]
+Y = \overline{\,\overline{(D_0 \cdot \overline{S})} \cdot \overline{(D_1 \cdot S)}\,}
+
+[text]
+This meant building one inverter and three NAND gates — entirely out of NPN transistors in series with pull-up resistors. Resistor-Transistor Logic, the old school way.
+
+[heading] The schematic in words
+
+[text]
+[Fill in: describe the stages in your own voice. Q1 as the inverter, Q2-Q7 handling the NANDs, Q8 driving the LED. Mention the resistor choices — 10K at the base, 1K pull-up, 330Ω for the LED.]
+
+[heading] The part where nothing worked
+
+[text]
+[Fill in: your debugging story. The ungrounded Q7 emitter. The moment you realized the schematic was clean but the breadboard was lying. What did you measure? What was the fix?]
+
+[heading] The threshold experiment
+
+[text]
+Once the MUX was verified against the truth table, we swapped the select switch for a potentiometer. Instead of snapping between 0V and 5V, we swept S slowly and watched the LED.
+
+[text]
+The transition didn't happen at some abstract logic boundary. It happened at roughly 0.7V — the physical base-emitter threshold of the transistor. Below that, Q1 is off and S̄ is high. Above it, Q1 saturates and the output flips. The "0" and "1" are just labels we put on voltages. The transistor only knows current and junction physics.
+
+[text]
+[Optional: insert your measured VTC data or a sketch of the curve here.]
+
+[heading] The truth table
+
+[text]
+After the fix, we checked every combination. The circuit behaved exactly like the equation predicted:
+
+[list]
+- S=0, D0=0, D1=0 → Y=0 (LED off)
+- S=0, D0=1, D1=0 → Y=1 (LED on)
+- S=0, D0=1, D1=1 → Y=1 (LED on)
+- S=1, D0=0, D1=0 → Y=0 (LED off)
+- S=1, D0=0, D1=1 → Y=1 (LED on)
+- S=1, D0=1, D1=0 → Y=0 (LED off)
+- S=1, D0=1, D1=1 → Y=1 (LED on)
+
+[text]
+[Fill in: any specific voltage measurements you want to highlight. Mention the 26mV and 57mV saturation voltages if you want to get technical.]
+
+[heading] What I actually learned
+
+[text]
+[Fill in: your personal reflection. What surprised you? Was it the math, the wiring mess, or the moment the LED snapped at 0.7V?]
+
+[quote]
+[Fill in: your own one-liner. Something about abstraction vs. physics, or breadboards as truth-tellers.]
+
+[divider]
+
+[text]
+[Fill in: closing thought. Maybe a link to your Tinkercad simulation or GitHub repo. Tease the next project if you want.]
+
+[text]
+**Project files:** [GitHub repo](https://github.com/rowyfol/Elec101) | [Tinkercad simulation](https://www.tinkercad.com/things/4JDG91bPrdF-magnificent-leelo-luulia?sharecode=P3w_72XjgpzeE71dH-Q66N6LDBuPjUM-qISmru5L_fw)

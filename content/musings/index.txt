@@ -1,5 +1,1 @@
 # Musings - list one filename per line (without .txt extension)
-attention-is-a-compiler
-the-comfort-of-constraints
-notes-on-nostalgia
-the-web-as-a-room

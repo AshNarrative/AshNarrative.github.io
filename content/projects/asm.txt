@@ -161,3 +161,15 @@ Y3 = 0
 
 [text]
 That means: Memory Cell 2: Enabled
+
+[ascii]
+
+| Binary Address | Decimal | Decoder Output | Selected Memory Cell |
+| -------------- | ------- | -------------- | -------------------- |
+| `00`           | 0       | Y0             | Memory Cell 0        |
+| `01`           | 1       | Y1             | Memory Cell 1        |
+| `10`           | 2       | Y2             | Memory Cell 2        |
+| `11`           | 3       | Y3             | Memory Cell 3        |
+
+10₂ → Memory Cell 2
+10₁₀ → Memory Cell 10

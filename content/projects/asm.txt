@@ -1,0 +1,59 @@
+---
+title: 8086 Assembly Programming
+date: 2026-07-24
+tags: [asm, 8086]
+excerpt:
+---
+
+[text]
+based on ChibiAkumas Tutorials
+
+[heading]
+------> Absolute Beginners series (Terminology and concepts):
+[text]
+Lesson 1:
+[text]
+Memory:
++-------+------+
+| Box 0 | 0101 |
++-------+------+
+| Box 1 | 1110 |
++-------+------+
+| Box 2 | 0001 |
++-------+------+
+      ...
++-----------+------+
+| Box 65535 | 1010 |
++-----------+------+
+
+Address      Data
+-------      ----
+0            25
+1            132
+2            7
+3            255
+4            19
+...
+65535        90
+
+
+Address bus:
+
+CPU
+ │
+ │ Address Bus
+ │
+ ▼
+Memory
+
+The cpu send the address over this wires. The memory responds with the data stored there.
+for Z80, it has a 16-bit address but --> 16 wires
+each wire can be either: 0 or 1
+so together they can represent :
+0000000000000000
+through
+1111111111111111
+
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ : 2^16 = 65536
+therefore 1 the CPU can point exacly at: 65536 memory locations which is: 64 KB
+( 65536 bytes = 64 x 1024 bytes )

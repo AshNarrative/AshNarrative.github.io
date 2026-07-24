@@ -15,6 +15,11 @@ Lesson 1:
 [text]
 Memory:
 
+[image]
+src: https://www.chibiakumas.com/z80/res/Z802021_Memory.png
+alt: Memory Image Description
+caption: Memory is like a bank of numbered 'lockers' that can each store 1 byte messages.
+
 [ascii]
 +-------+------+
 | Box 0 | 0101 |
@@ -177,6 +182,12 @@ That means: Memory Cell 2: Enabled
 [text]
 Registers:
 
+
+[image]
+src: https://www.chibiakumas.com/z80/res/Z802021_Registers.png
+alt: Registers Image Description
+caption: Registers are 'short term memory', just a few bytes are available.
+
 [text]
 Registers are 'short term memory', just a few bytes are available. RAM is 'Long term memory' many Kilobytes or even Megabytes will be available.
 
@@ -231,6 +242,12 @@ To let every register be both an input and output would require more multiplexer
 
 [text]
 Program Counter Register (PC) / Instruction Pointer (IP):
+
+[image]
+src: https://www.chibiakumas.com/z80/res/Z802021_PC.png
+alt: PC Image Description
+caption: The Program Counter Register (PC) / Instruction Pointer (IP) holds the address of the next instruction to execute.
+
 [text]
 Suppose your program is stored in memory and the memory looks like this:
 [ascii]

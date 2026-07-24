@@ -95,3 +95,70 @@ Exactly the same addresses now mean
 4001 -> Different byte
 ...
 7FFF -> Different byte
+
+[text]
+(How does memory know which byte to access?)
+[text]
+
+[ascii]
+A1  A0
+ │   │
+ ▼   ▼
+
++-------------+
+| 2→4 Decoder |
++-------------+
+ │ │ │ │
+ │ │ │ └── Y3
+ │ │ └──── Y2
+ │ └────── Y1
+ └──────── Y0
+
+[text]
+Imagine four memory cells:
+[ascii]
+Memory Cell 0
+Memory Cell 1
+Memory Cell 2
+Memory Cell 3
+[text]
+Each memory cell has an Enable input.
+[ascii]
+          Enable
+             │
+             ▼
++-----------------+
+| Memory Cell 0   |
++-----------------+
+
++-----------------+
+| Memory Cell 1   |
++-----------------+
+
++-----------------+
+| Memory Cell 2   |
++-----------------+
+
++-----------------+
+| Memory Cell 3   |
++-----------------+
+
+[text]
+Now connect the decoder outputs:
+[ascii]
+Y0 ─────────► Enable of Memory Cell 0
+Y1 ─────────► Enable of Memory Cell 1
+Y2 ─────────► Enable of Memory Cell 2
+Y3 ─────────► Enable of Memory Cell 3
+[text]
+Now suppose the CPU sends address 10.
+[text]
+The decoder produces:
+[ascii]
+Y0 = 0
+Y1 = 0
+Y2 = 1
+Y3 = 0
+
+[text]
+That means: Memory Cell 2: Enabled

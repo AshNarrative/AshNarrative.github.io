@@ -98,7 +98,6 @@ Exactly the same addresses now mean
 
 [text]
 (How does memory know which byte to access?)
-[text]
 
 [ascii]
 A1  A0

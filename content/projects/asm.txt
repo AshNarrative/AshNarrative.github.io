@@ -6,7 +6,7 @@ excerpt:
 ---
 
 [text]
-based on ChibiAkumas Tutorials
+Based on ChibiAkumas Tutorials
 
 [heading]
 ------> Absolute Beginners series (Terminology and concepts):

@@ -14,29 +14,19 @@ based on ChibiAkumas Tutorials
 Lesson 1:
 [text]
 Memory:
-[text]
+
+[ascii]
 +-------+------+
-[text]
 | Box 0 | 0101 |
-[text]
 +-------+------+
-[text]
 | Box 1 | 1110 |
-[text]
 +-------+------+
-[text]
 | Box 2 | 0001 |
-[text]
 +-------+------+
-[text]
       ...
-[text]
 +-----------+------+
-[text]
 | Box 65535 | 1010 |
-[text]
 +-----------+------+
-[text]
 
 Address      Data
 -------      ----
@@ -49,8 +39,10 @@ Address      Data
 65535        90
 
 
+[text]
 Address bus:
 
+[ascii]
 CPU
  │
  │ Address Bus
@@ -58,6 +50,7 @@ CPU
  ▼
 Memory
 
+[text]
 The cpu send the address over this wires. The memory responds with the data stored there.
 for Z80, it has a 16-bit address but --> 16 wires
 each wire can be either: 0 or 1

@@ -25,6 +25,11 @@
  * [code]
  * console.log("hello");
  *
+ * [ascii]
+ * +-------+------+
+ * | Box 0 | 0101 |
+ * +-------+------+
+ *
  * [quote]
  * "Great Scott!" - Doc Brown
  *
@@ -56,7 +61,12 @@ const ContentParser = (() => {
       let value = line.slice(idx + 1).trim();
 
       if (key === 'tags') {
-        value = value.split(',').map(t => t.trim()).filter(Boolean);
+        value = value
+          .replace(/^\[/, '')
+          .replace(/\]$/, '')
+          .split(',')
+          .map(t => t.trim())
+          .filter(Boolean);
       }
       meta[key] = value;
     }
@@ -82,14 +92,21 @@ const ContentParser = (() => {
 
     for (let i = 1; i < parts.length; i += 3) {
       const type = parts[i];
-      const inline = (parts[i + 1] || '').trim();
-      const body = (parts[i + 2] || '').trim();
+      const inline = trimBlock(parts[i + 1] || '');
+      const body = trimBlock(parts[i + 2] || '');
       const content = inline ? (body ? inline + '\n' + body : inline) : body;
 
       blocks.push({ type, content });
     }
 
     return blocks;
+  }
+
+  /**
+   * Remove marker-separating blank lines without touching indentation.
+   */
+  function trimBlock(value) {
+    return value.replace(/^\n+/, '').replace(/\n+$/, '');
   }
 
   /**

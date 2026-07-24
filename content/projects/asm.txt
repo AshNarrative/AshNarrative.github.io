@@ -58,7 +58,8 @@ so together they can represent :
 0000000000000000
 through
 1111111111111111
-
+[ascii]
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ : 2^16 = 65536
+[text]
 therefore 1 the CPU can point exacly at: 65536 memory locations which is: 64 KB
 ( 65536 bytes = 64 x 1024 bytes )

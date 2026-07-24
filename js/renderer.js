@@ -48,6 +48,13 @@ const ContentRenderer = (() => {
   }
 
   /**
+   * Render ASCII art and diagrams with exact spacing preserved.
+   */
+  function renderAscii(content) {
+    return `<div class="block block-ascii"><pre>${escapeHtml(content)}</pre></div>`;
+  }
+
+  /**
    * Render a quote block
    */
   function renderQuote(content) {
@@ -96,6 +103,8 @@ const ContentRenderer = (() => {
         case 'latex':   return renderLatex(block.content);
         case 'image':   return renderImage(block.content);
         case 'code':    return renderCode(block.content);
+        case 'ascii':   return renderAscii(block.content);
+        case 'diagram': return renderAscii(block.content);
         case 'quote':   return renderQuote(block.content);
         case 'heading': return renderHeading(block.content);
         case 'list':    return renderList(block.content);
@@ -148,6 +157,7 @@ const ContentRenderer = (() => {
     renderLatex,
     renderImage,
     renderCode,
+    renderAscii,
     renderQuote,
     renderHeading,
     renderList,

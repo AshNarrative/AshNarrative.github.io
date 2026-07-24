@@ -81,23 +81,28 @@ const ContentParser = (() => {
     const blocks = [];
     if (!bodyRaw) return blocks;
 
-    // Split on block markers: [type] or [type] inline-content
-    const parts = bodyRaw.split(/^\[(\w+)\]\s*(.*)?$/m);
+    // Block markers look like [type] or [type-name] inline-content.
+    const markerRe = /^\[([\w-]+)\][^\S\r\n]*(.*)?$/gm;
+    const markers = Array.from(bodyRaw.matchAll(markerRe));
 
-    // parts[0] = text before first marker (if any)
-    // then groups of 3: [matchedType, inlineContent, blockBody]
-    if (parts[0] && parts[0].trim()) {
-      blocks.push({ type: 'text', content: parts[0].trim() });
+    if (markers.length === 0) {
+      if (bodyRaw.trim()) blocks.push({ type: 'text', content: bodyRaw.trim() });
+      return blocks;
     }
 
-    for (let i = 1; i < parts.length; i += 3) {
-      const type = parts[i];
-      const inline = trimBlock(parts[i + 1] || '');
-      const body = trimBlock(parts[i + 2] || '');
+    const leadingText = bodyRaw.slice(0, markers[0].index).trim();
+    if (leadingText) blocks.push({ type: 'text', content: leadingText });
+
+    markers.forEach((marker, index) => {
+      const type = marker[1].toLowerCase();
+      const inline = trimBlock(marker[2] || '');
+      const bodyStart = marker.index + marker[0].length;
+      const bodyEnd = index + 1 < markers.length ? markers[index + 1].index : bodyRaw.length;
+      const body = trimBlock(bodyRaw.slice(bodyStart, bodyEnd));
       const content = inline ? (body ? inline + '\n' + body : inline) : body;
 
       blocks.push({ type, content });
-    }
+    });
 
     return blocks;
   }

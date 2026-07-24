@@ -100,7 +100,7 @@
     } else if (route.section === 'webring') {
       renderWebring();
     } else if (route.slug) {
-      renderPost(route.section, route.slug);
+      renderPost(route.section, route.slug, route.page);
     } else if (sections[route.section]) {
       renderSection(route.section, route.page);
     } else {
@@ -495,13 +495,17 @@
   }
 
   // ── Single Post ───────────────────────────────────────────
-  async function renderPost(section, slug) {
+  async function renderPost(section, slug, page = 1) {
     const info = sections[section];
     contentEl.innerHTML = `<div class="loading">Loading post...</div>`;
 
     try {
       const raw = await fetchContent(`content/${section}/${slug}.txt`);
       const { meta, blocks } = ContentParser.parse(raw);
+      const pages = paginatePostBlocks(blocks);
+      const totalPages = pages.length;
+      const currentPage = Math.min(Math.max(page, 1), totalPages);
+      const currentBlocks = pages[currentPage - 1];
 
       let html = `
         <div class="post-view">
@@ -514,8 +518,9 @@
             </div>
           </div>
           <div class="post-body">
-            ${ContentRenderer.renderBlocks(blocks)}
+            ${ContentRenderer.renderBlocks(currentBlocks)}
           </div>
+          ${totalPages > 1 ? renderPostPageControls(section, slug, currentPage, totalPages) : ''}
         </div>`;
 
       contentEl.innerHTML = html;
@@ -533,6 +538,55 @@
           <div class="empty-state">Post not found: ${escapeHtml(slug)}</div>
         </div>`;
     }
+  }
+
+
+  function paginatePostBlocks(blocks) {
+    const pages = [[]];
+
+    blocks.forEach(block => {
+      if (block.type === 'next-page') {
+        if (pages[pages.length - 1].length > 0) {
+          pages.push([]);
+        }
+        return;
+      }
+
+      pages[pages.length - 1].push(block);
+    });
+
+    return pages.filter(pageBlocks => pageBlocks.length > 0).length
+      ? pages.filter(pageBlocks => pageBlocks.length > 0)
+      : [[]];
+  }
+
+  function renderPostPageControls(section, slug, currentPage, totalPages) {
+    let html = '<nav class="pagination post-pagination" aria-label="Post pages">';
+
+    if (currentPage > 1) {
+      html += `<a href="#${section}/${slug}?page=${currentPage - 1}" class="pagination-link pagination-prev">← Previous page</a>`;
+    } else {
+      html += '<span class="pagination-link pagination-prev disabled">← Previous page</span>';
+    }
+
+    html += '<span class="pagination-numbers">';
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === currentPage) {
+        html += `<span class="pagination-link active" aria-current="page">${i}</span>`;
+      } else {
+        html += `<a href="#${section}/${slug}?page=${i}" class="pagination-link">${i}</a>`;
+      }
+    }
+    html += '</span>';
+
+    if (currentPage < totalPages) {
+      html += `<a href="#${section}/${slug}?page=${currentPage + 1}" class="pagination-link pagination-next">Next page →</a>`;
+    } else {
+      html += '<span class="pagination-link pagination-next disabled">Next page →</span>';
+    }
+
+    html += '</nav>';
+    return html;
   }
 
   // ── Gallery ───────────────────────────────────────────────

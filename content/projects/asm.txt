@@ -180,6 +180,8 @@ Registers:
 [text]
 Registers are 'short term memory', just a few bytes are available. RAM is 'Long term memory' many Kilobytes or even Megabytes will be available.
 
+[divider]
+
 [text]
 Lesson 2 - Basics... The Mysteries of the CPU!:
 
@@ -226,3 +228,40 @@ B -------->|         |
 The ALU (Arithmetic Logic Unit) takes inputs, performs the operation and wires the output back into A.
 [text]
 To let every register be both an input and output would require more multiplexers, control logic and wiring.
+
+[text]
+Program Counter Register (PC) / Instruction Pointer (IP):
+[text]
+Suppose your program is stored in memory and the memory looks like this:
+[ascii]
+Address      Instruction
+-------      ----------------
+1000         LD A,5
+1002         ADD A,3
+1004         SUB A,1
+1006         HALT
+
+[text]
+Instructions live in memory just like data.
+
+[text]
+Every clock cycle CPU wants to know which instruction to execute next. the answer to this question is stored in the PC register.
+
+[text]
+At the beginning of the program, the PC is set to the address of the first instruction.
+[code]
+PC = 1000
+[text]
+Step 1
+[text]
+CPU reads the instruction at PC = 1000:
+[code]
+Memory[1000] = LD A,5
+[text]
+It executes the instruction:
+[code]
+LD A,5
+[text]
+Then it increments PC to point to the next instruction:
+[code]
+PC = 1002

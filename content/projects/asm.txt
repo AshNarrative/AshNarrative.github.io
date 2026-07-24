@@ -63,3 +63,35 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ : 2^16 = 65536
 [text]
 therefore 1 the CPU can point exacly at: 65536 memory locations which is: 64 KB
 ( 65536 bytes = 64 x 1024 bytes )
+
+[text]
+Bank switching:
+[text]
+Imagine instead of one bookshelf, you have multiple bookshelves (banks)
+
+[ascii]
+Shelf A
+Shelf B
+Shelf C
+Shelf D
+...
+
+[text]
+And you have a switch to select which shelf you're looking at.
+
+[text]
+Suppose the Bank 0 is active.
+[ascii]
+4000 -> Data from Bank 0
+4001 -> Data from Bank 0
+...
+7FFF -> Data from Bank 0
+[text]
+Now switch to Bank 1.
+[text]
+Exactly the same addresses now mean
+[ascii]
+4000 -> Different byte
+4001 -> Different byte
+...
+7FFF -> Different byte

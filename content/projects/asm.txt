@@ -6,10 +6,10 @@ excerpt:
 ---
 
 [text]
-based on ChibiAkumas Tutorials
+Based on ChibiAkumas Tutorials
 
 [heading]
-------> Absolute Beginners series (Terminology and concepts):
+Absolute Beginners series (Terminology and concepts):
 [text]
 Lesson 1:
 [text]

@@ -154,6 +154,26 @@ Numbered lists work too:
 [divider]
 ```
 
+### Long post pages
+
+Use `[next-page]` to split one long post into multiple readable pages. The site will add **Previous page** and **Next page** buttons automatically, plus page numbers.
+
+```text
+[text]
+This appears on page 1.
+
+[next-page]
+
+[text]
+This appears on page 2.
+
+[next-page]
+
+[text]
+This appears on page 3.
+```
+
+
 ## 4. Minimal post template
 
 Copy this when making a new post:

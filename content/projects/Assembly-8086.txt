@@ -179,6 +179,8 @@ That means: Memory Cell 2: Enabled
 10₂ → Memory Cell 2
 10₁₀ → Memory Cell 10
 
+[next-page]
+
 [text]
 Registers:
 
@@ -290,3 +292,33 @@ Flags Register / Condition Codes:
 src: /content/gallery/upload/Asm_P/FR_CC.png
 alt: Flags Image Description
 caption: The Flags Register / Condition Codes hold the results of the last operation.
+
+[text]
+If you calculate something like 5 - 5 = 0, the result is stored in the A register (usually) and the zero flag (Z) is set.
+
+[ascii]
++------------------------+
+| Z | C | V | N | ...    |
++------------------------+
+| 1 | 0 | 0 | 0 | ...    |
++------------------------+
+
+[text]
+Flag registers storing yes/no answers to questions about the last operation.
+
+[text]
+Zero Falg (Z):
+[text]
+Question: Was the result zero?
+[code]
+LD A, 5
+SUB A, 5
+[text]
+The CPU computes:
+[code]
+5 - 5 = 0
+[text]
+Now:
+[code]
+A = 0
+Z = 1 ; The answer is zero, so Z is set.

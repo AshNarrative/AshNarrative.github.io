@@ -6,7 +6,7 @@ excerpt:
 ---
 
 [text]
-Based on ChibiAkumas Tutorials
+based on ChibiAkumas Tutorials
 
 [heading]
 ------> Absolute Beginners series (Terminology and concepts):
@@ -173,3 +173,56 @@ That means: Memory Cell 2: Enabled
 
 10₂ → Memory Cell 2
 10₁₀ → Memory Cell 10
+
+[text]
+Registers:
+
+[text]
+Registers are 'short term memory', just a few bytes are available. RAM is 'Long term memory' many Kilobytes or even Megabytes will be available.
+
+[text]
+Lesson 2 - Basics... The Mysteries of the CPU!:
+
+[text]
+Accumulator Register (A):
+
+[code]
+LD A,5      ; A = 5
+ADD A,8     ; A = A + 8
+
+[text]
+Keep in mind:
+
+[code]
+LD A,5
+LD B,8
+ADD A,B
+
+[text]
+Result:
+
+[code]
+A = 13
+B = 8
+
+[text]
+Notice the result must go into A.
+
+[text]
+Why on this case the Z80 have one accumulator register (A) and not two (A and B)?
+
+[text]
+Because the hardware was simpler.
+[text]
+if you build the CPU from logic gates, it's much easier to design one adder whose output always goes back into A.
+[ascii]
+           +---------+
+A -------->|         |
+           |   ALU   |-------> A
+B -------->|         |
+           +---------+
+
+[text]
+The ALU (Arithmetic Logic Unit) takes inputs, performs the operation and wires the output back into A.
+[text]
+To let every register be both an input and output would require more multiplexers, control logic and wiring.

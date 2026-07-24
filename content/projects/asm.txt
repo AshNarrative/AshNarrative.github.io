@@ -14,17 +14,29 @@ based on ChibiAkumas Tutorials
 Lesson 1:
 [text]
 Memory:
+[text]
 +-------+------+
+[text]
 | Box 0 | 0101 |
+[text]
 +-------+------+
+[text]
 | Box 1 | 1110 |
+[text]
 +-------+------+
+[text]
 | Box 2 | 0001 |
+[text]
 +-------+------+
+[text]
       ...
+[text]
 +-----------+------+
+[text]
 | Box 65535 | 1010 |
+[text]
 +-----------+------+
+[text]
 
 Address      Data
 -------      ----

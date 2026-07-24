@@ -193,8 +193,6 @@ Registers are 'short term memory', just a few bytes are available. RAM is 'Long 
 
 [divider]
 
-[next-page]
-
 [text]
 Lesson 2 - Basics... The Mysteries of the CPU!:
 
@@ -284,3 +282,11 @@ LD A,5
 Then it increments PC to point to the next instruction:
 [code]
 PC = 1002
+
+[text]
+Flags Register / Condition Codes:
+
+[image]
+src: /content/gallery/upload/Asm_P/FR_CC.png
+alt: Flags Image Description
+caption: The Flags Register / Condition Codes hold the results of the last operation.
